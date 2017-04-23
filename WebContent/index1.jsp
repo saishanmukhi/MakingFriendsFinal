@@ -69,6 +69,7 @@
       <ul class="nav navbar-nav navbar-right">
         <li><a href="register.jsp"><input type ="submit" value ="SIGNUP"/></a></li>
         <li><a href="login.jsp"><input type ="submit" value ="LOGIN"/></a></li>
+        <li><a href="login.jsp"><input type ="submit" value ="ADMIN LOGIN"/></a></li>
       </ul>
     </div>
   </div>
@@ -80,6 +81,10 @@
   <img src="http://www.hotwater911.com/wp-content/uploads/2011/08/HotWater911-Making-Friends.jpg" class="img-responsive img-circle margin" style="display:inline" alt="Bird" width="350" height="350">
   <h3>Join in and socialize!</h3>
 </div>
-
+<form action ="viewfeedback" method="post">
+<div class="col-md-4 text-center">
+<input type ="submit" class ="btn btn-info" value ="FEEDBACK"/>
+</div>
+</form>
 </body>
 </html>

@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+ <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -11,20 +11,31 @@
   <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<title>MEET</title>
+<title>Notifications</title>
 </head>
+<style type="text/css">
+th
+{
+    padding:0 15px 0 15px;
+}
+td
+{
+    padding:0 15px 0 15px;
+}
+</style>
 <style>
-table.ex1 {
-    border-collapse: separate;
-    border-spacing: 60px;
+.btn {
+    margin: 15px auto;
 }
 body {
       font: 20px Montserrat, sans-serif;
       line-height: 1.8;
-      color: #f5f6f7;
+     
   }
+  p {font-size: 16px;}
   .margin {margin-bottom: 45px;}
-   .container-fluid {
+ 
+  .container-fluid {
       padding-top: 70px;
       padding-bottom: 70px;
   }
@@ -40,10 +51,28 @@ body {
   .navbar-nav  li a:hover {
       color: #1abc9c !important;
   }
+table{
+	margin: 0 auto;
+}
+table.ex1 {
+    border-collapse: separate;
+    border-spacing: 10px;
+}
 </style>
-
 <body>
 <div class="container">
+<div class = "page-header">
+<h1>Welcome Admin</h1>
+    <div class="btn-toolbar pull-right">
+    	<table align ="right" style="margin-top:10px" class = "ex1">
+    	<tr>
+		<form action="logout" method="post">
+		<td><input type ="submit" name="LOGOUT" button class ="btn btn-info" value ="LOGOUT"/></td>
+		</form>
+         </tr>
+        </table>
+    </div>
+ </div>
 <div class="navbar-header">
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
         <span class="icon-bar"></span>
@@ -52,25 +81,32 @@ body {
       </button>
       <a class="navbar-brand" align="left" href="#">MakingFriends.com</a>
     </div>
- <div class="container-fluid bg-1 text-center">
- <img src="https://media.tenor.co/images/b3f33ac02643a0a89f55e22a6d03e9b6/tenor.gif" class="img-responsive img-circle margin" style="display:inline" alt="people" width="400" height="300">   
+<div class="container-fluid bg-1 text-center">
 <input type="hidden" name="uname" value='${uname}'/>
-<table align ="Center" style="margin-top:0px" class = "ex1">
+
+<h3 align="center">Users Reported</h3> 
+ 
+ <table border ="5">
+
+   <tr>
+   <th>User Name</th>
+   <th>Crook</th>
+   <th>Reason</th>
+   </tr>
+   <c:forEach var="reports" items="${reports}" >
+   <tr>
+    <td>${reports.userName}</td>
+    <td>${reports.reportedUserName}</td>
+    <td>${reports.reason}</td>
+    </tr>
+	</c:forEach>
 <tr>
-<form action="settime" method="post">
-<td><input type ="submit" name="Set Availability" button class ="btn btn-info" value ="Set Availability"/></td>
-</form>
-<form action="search" method="post">
-<td><input type ="submit" name="Search" button class ="btn btn-info" value ="Search"/></td>
-</form>
-</tr>
-<tr>
-<form action="home" method="post">
-<td align ="center"><input type ="submit" name="HOME" button class ="btn btn-info" value ="HOME"/></td>
-</form>
-</tr>
 </table>
-</div>
+<table>
+<form action="ReportedUser" method="post">
+<td><input type ="submit" name="TAction" button class ="btn btn-info" value ="Take Action"/></td>
+</form>
+</table>
 </div>
 </body>
 </html>

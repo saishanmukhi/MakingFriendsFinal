@@ -64,7 +64,7 @@ public class timeinsert extends HttpServlet {
 			if(v.validateFromTime(fromx, datex)==true)
 			{
 				System.out.println("from time validated");
-				if(v.validateToTime(tox, datex)==true)
+				if(v.validateToTime(fromx,tox, datex)==true)
 				{
 					System.out.println("to time validated");
 						Date d1=null,d2=null;

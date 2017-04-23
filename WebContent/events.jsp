@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+    <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -11,20 +11,37 @@
   <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<title>MEET</title>
+<title>EVENTS</title>
 </head>
+
+<style type="text/css">
+th
+{
+    padding:0 15px 0 15px;
+}
+td
+{
+    padding:0 15px 0 15px;
+}
+form{
+     margin:auto;
+     display:block;
+}
+</style>
+
 <style>
-table.ex1 {
-    border-collapse: separate;
-    border-spacing: 60px;
+.btn {
+    margin: 15px auto;
 }
 body {
       font: 20px Montserrat, sans-serif;
       line-height: 1.8;
-      color: #f5f6f7;
+     
   }
+p {font-size: 16px;}
   .margin {margin-bottom: 45px;}
-   .container-fluid {
+ 
+  .container-fluid {
       padding-top: 70px;
       padding-bottom: 70px;
   }
@@ -40,8 +57,14 @@ body {
   .navbar-nav  li a:hover {
       color: #1abc9c !important;
   }
+table{
+	margin: 0 auto;
+}
+table.ex1 {
+    border-collapse: separate;
+    border-spacing: 10px;
+}
 </style>
-
 <body>
 <div class="container">
 <div class="navbar-header">
@@ -52,25 +75,36 @@ body {
       </button>
       <a class="navbar-brand" align="left" href="#">MakingFriends.com</a>
     </div>
- <div class="container-fluid bg-1 text-center">
- <img src="https://media.tenor.co/images/b3f33ac02643a0a89f55e22a6d03e9b6/tenor.gif" class="img-responsive img-circle margin" style="display:inline" alt="people" width="400" height="300">   
-<input type="hidden" name="uname" value='${uname}'/>
-<table align ="Center" style="margin-top:0px" class = "ex1">
-<tr>
-<form action="settime" method="post">
-<td><input type ="submit" name="Set Availability" button class ="btn btn-info" value ="Set Availability"/></td>
-</form>
-<form action="search" method="post">
-<td><input type ="submit" name="Search" button class ="btn btn-info" value ="Search"/></td>
-</form>
-</tr>
-<tr>
-<form action="home" method="post">
-<td align ="center"><input type ="submit" name="HOME" button class ="btn btn-info" value ="HOME"/></td>
-</form>
-</tr>
+</div>
+<div class="container-fluid bg-1 text-center">
+
+<h3 align="center">EVENTS</h3> 
+<table border ="5" align="Center" >
+   <tr>
+   <th>Host</th>
+   <th>Location</th>
+   <th>From</th>
+   <th>To</th>
+   <th>Description</th>
+   </tr>
+<c:forEach var="event" items="${events}">
+   <tr>
+    <c:out value="${event.n}"/>
+    <c:out value="${event.l}"/>
+    <c:out value="${event.f}"/>
+    <c:out value="${event.t}"/>
+    <c:out value="${event.d}"/>
+   </tr>
+</c:forEach>
 </table>
-</div>
-</div>
+<table align="Center" class = "ex1">
+<tr>
+    <tr>
+    <td><form action="createevent.jsp">
+    <input type="submit" value="ADD EVENTS" />
+    </form></td>
+    </tr>
+</table>
+
 </body>
 </html>

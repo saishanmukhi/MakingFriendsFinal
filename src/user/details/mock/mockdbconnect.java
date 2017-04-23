@@ -19,7 +19,7 @@ Connection con = null;
 		}
 		try
 		{
-			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/logindb","root","mylife@123");
+			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/mocklogindb","root","mylife@123");
 			return con;
 		}
 		catch(SQLException e)

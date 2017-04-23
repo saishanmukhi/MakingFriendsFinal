@@ -17,59 +17,53 @@
     margin-right: 5px;
 }
 </style>
-<style>
-table.ex1 {
-    border-collapse: separate;
-    border-spacing: 20px;
-}
-</style>
 </head>
 <c:if test="${not empty updatedmessage}">
     <script>
     alert("Profile saved");
 </script>
 </c:if>
-
+<c:if test="${not empty available}">
+    <script>
+    alert("Available time has been set");
+</script>
+</c:if>
+<c:if test="${not empty notifications}">
+    <script>
+    alert("No messages to display !!");
+</script>
+</c:if>
 <body>
 <div class = "container">
 <div class = "page-header">
 <h1>Welcome !</h1>
     <div class="btn-toolbar pull-right">
-    	<table align ="right" style="margin-top:10px" class = "ex1">
-    	<tr>
         <form action="profile" method="get">
-		<td><input type ="submit" name="PROFILE" button class ="btn btn-info" value ="PROFILE"/></td>
+		<input type ="submit" name="PROFILE" button class ="btn btn-info" value ="PROFILE"/>
 		</form>
-		<form action="logout" method="post">
-		<td><input type ="submit" name="LOGOUT" button class ="btn btn-info" value ="LOGOUT"/></td>
-		</form>
-         </tr>
-        </table>
+        <a href="login.jsp"><input type ="button" button class ="btn btn-info" value ="LOGOUT"/></a>
     </div>
  </div>
-
- <h3 align ="left">Hello, </h3>
- <h3>${uname}</h3>
- <table align ="Center" style="margin-top:50px" class = "ex1">
- <tr>
- <form action="matchuser" method="post">
-<td align="left"><input type ="submit" name="MATCH" button class ="btn btn-info" value ="MATCH"/></td>
+ <h3 align ="left" >Hello,</h3>
+<h3>${uname}</h3>
+<form action="matchuser" method="post">
+<input type ="submit" name="MATCH" button class ="btn btn-info" value ="MATCH"/>
 </form>
 <form action="meet" method="post">
-<td align="center"><input type ="submit" name="MEET" button class ="btn btn-info" value ="MEET"/></td>
+<input type ="submit" name="MEET" button class ="btn btn-info" value ="MEET"/>
 </form>
 <form action="notification" method="post">
-<td align="right"><input type ="submit" name="NOTIFICATIONS" button class ="btn btn-info" value ="NOTIFICATIONS"/></td>
+<input type ="submit" name="NOTIFICATIONS" button class ="btn btn-info" value ="NOTIFICATIONS"/>
 </form>
 <form action="report" method="post">
-<td align="right"><input type ="submit" name="REPORT" button class ="btn btn-info" value ="REPORT"/></td>
+<input type ="submit" name="Report" button class ="btn btn-info" value ="REPORT"/>
 </form>
-<form action="FeedbackControl" method="post">
-<td align="right"><input type ="submit" name="FEEDBACK" button class ="btn btn-info" value ="FEEDBACK"/></td>
+<form action="feedback" method="post">
+<input type ="submit" name="FEEDBACK" button class ="btn btn-info" value ="FEEDBACK"/>
 </form>
-<td><a href ="events.jsp"><input type ="submit" button class ="btn btn-info" value ="EVENTS"/></a></td>
-</tr>
-</table>
- </div>
+<form action="events" method="post">
+<input type ="submit" name="EVENTS" button class ="btn btn-info" value ="EVENTS"/>
+</form>
+</div>
 </body>
 </html>

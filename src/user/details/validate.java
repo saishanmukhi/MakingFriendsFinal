@@ -175,45 +175,108 @@ public class validate {
             }
             return check;
         }
-        public boolean validateToTime(String to, String date)
-        {
-            Calendar cal = Calendar.getInstance();
+        public boolean validateToTime(String from, String to, String date)
+		{
+			Calendar cal = Calendar.getInstance();
             boolean check = false;    
             if(to.matches("\\d{2}:\\d{2}"))
             {
+            	int fh = Integer.parseInt(from.substring(0, 2));
+                int fm = Integer.parseInt(from.substring(3, from.length()));
                 int h = Integer.parseInt(to.substring(0, 2));
                 int m = Integer.parseInt(to.substring(3, to.length()));
                 int y = Integer.parseInt(date.substring(0, 4));
                 int mon = Integer.parseInt(date.substring(5, 7));
                 int d = Integer.parseInt(date.substring(8, date.length()));
-                
-                if(d == cal.get(Calendar.DATE) && y == cal.get(Calendar.YEAR) && mon == (cal.get(Calendar.MONTH) + 1) && h >= cal.get(Calendar.HOUR_OF_DAY) && h <= 23)
+                if(fh < h || (fh == h && fm < m))
                 {
-                    if(h == cal.get(Calendar.HOUR_OF_DAY) && m >= cal.get(Calendar.MINUTE))
+                	if(d == cal.get(Calendar.DATE) && y == cal.get(Calendar.YEAR) && mon == (cal.get(Calendar.MONTH) + 1) && h >= cal.get(Calendar.HOUR_OF_DAY) && h <= 23)
                     {
-                        if(h == 0 && m <= 59 && m >= 29)
-                            check = true;
-                        else if(h != 0 && m >= 0 && m <= 59)
-                            check = true;
+                        if(h == cal.get(Calendar.HOUR_OF_DAY) && m >= cal.get(Calendar.MINUTE))
+                        {
+                        	if(h == 0 && m <= 59 && m >= 29)
+                        		check = true;
+                        	else if(h != 0 && m >= 0 && m <= 59)
+                        		check = true;
+                        }
+                        else if(h != cal.get(Calendar.HOUR_OF_DAY))
+                        {
+                        	if(h != 0 && m >= 0 && m <= 59)
+                        		check = true;
+                        	else if(h == 0 && m <= 59 && m >= 29)
+                        		check = true;
+                        }
                     }
-                    else if(h != cal.get(Calendar.HOUR_OF_DAY))
+                    else if((d != cal.get(Calendar.DATE) || y != cal.get(Calendar.YEAR) || mon != (cal.get(Calendar.MONTH) + 1)))
                     {
-                        if(h != 0 && m >= 0 && m <= 59)
-                            check = true;
-                        else if(h == 0 && m <= 59 && m >= 29)
-                            check = true;
+                    	if(h > 0 && h <= 23 && m >= 0 && m <= 59)
+                    		check = true;
+                    	else if(h == 0 && m <= 59 && m >= 29)
+                    		check = true;
                     }
                 }
-                else if((d != cal.get(Calendar.DATE) || y != cal.get(Calendar.YEAR) || mon != (cal.get(Calendar.MONTH) + 1)))
+            }
+            return check;			
+		}
+		public boolean validEventText(String eventname) {
+			// TODO Auto-generated method stub
+			boolean check = false;
+            if(eventname != null)
+            {
+                if(!eventname.equals(""))
                 {
-                    if(h > 0 && h <= 23 && m >= 0 && m <= 59)
+                    if(!eventname.matches("\\s+"))
+
+
                         check = true;
-                    else if(h == 0 && m <= 59 && m >= 29)
-
-
+                }
+            }    
+            return check;
+		}
+		private boolean validDate(String beginDate, String endDate)
+		{
+			Calendar fromDate = Calendar.getInstance(), toDate = Calendar.getInstance();
+			fromDate.set(Integer.parseInt(beginDate.substring(6,10)), Integer.parseInt(beginDate.substring(0,2)), Integer.parseInt(beginDate.substring(3,5)), Integer.parseInt(beginDate.substring(11,13)), Integer.parseInt(beginDate.substring(14,16)));
+			toDate.set(Integer.parseInt(endDate.substring(0,4)), Integer.parseInt(endDate.substring(5,7)), Integer.parseInt(endDate.substring(7,9)), Integer.parseInt(endDate.substring(11,13)), Integer.parseInt(endDate.substring(14,16)));
+            boolean check = false;
+            if(fromDate.compareTo(toDate) == -1)
+            {
+            	if(fromDate.get(Calendar.YEAR) == toDate.get(Calendar.YEAR) && fromDate.get(Calendar.MONTH) == toDate.get(Calendar.MONTH) && fromDate.get(Calendar.DATE) == toDate.get(Calendar.DATE))
+            	{
+            		if(validateFromTime(beginDate.substring(11,16), beginDate.substring(0,9)) && validateToTime(beginDate.substring(11,16), endDate.substring(11,16), beginDate.substring(0,9)))
+            			check = true;
+            	}
+            	else
+            	{
+            		check = true;
+            	}
+            }
+            
+            return check;
+		}
+		public boolean validTime(String from, String to)
+        {
+            boolean check = false;
+            
+            if(from.matches("\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}") && to.matches("\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}"))
+            {
+                String fromDate = from.substring(0,10);
+                String toDate = to.substring(0,10);
+                
+                if(validateDate(fromDate) && validateDate(toDate))
+                {
+                    if(validDate(from, to))
                         check = true;
                 }
             }
-            return check;            
+                        
+            return check;
         }
+		public boolean validateRating(String userRating)
+		{
+			boolean check = false;
+			if(userRating != null)
+				check = true;
+			return check;
+		}
 }

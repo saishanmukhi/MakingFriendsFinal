@@ -79,11 +79,18 @@ public class login extends HttpServlet {
                 	      dispatcher.forward(request, response);
 
                 	}*/
-            		if(tpassword.equals(password))
+            		if(tpassword.equals(password) && !username.equals("admin"))
             		{
             			out.println("login successful");
                 		session.setAttribute("uname", username);
                 		RequestDispatcher dispatcher = request.getRequestDispatcher("/home");
+                	      dispatcher.forward(request, response);
+            		}
+            		else if(tpassword.equals(password) && username.equals("admin"))
+            		{
+            			System.out.println("login successful:admin");
+                		session.setAttribute("uname", username);
+                		RequestDispatcher dispatcher = request.getRequestDispatcher("/admin");
                 	      dispatcher.forward(request, response);
             		}
                 	else

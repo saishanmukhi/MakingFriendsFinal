@@ -11,38 +11,21 @@
   <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<title>MEET</title>
+<title>REPORT</title>
 </head>
 <style>
+.btn {
+    margin: 10px auto;
+}
 table.ex1 {
     border-collapse: separate;
-    border-spacing: 60px;
+    border-spacing: 10px;
 }
-body {
-      font: 20px Montserrat, sans-serif;
-      line-height: 1.8;
-      color: #f5f6f7;
-  }
-  .margin {margin-bottom: 45px;}
-   .container-fluid {
-      padding-top: 70px;
-      padding-bottom: 70px;
-  }
-  .navbar {
-      padding-top: 15px;
-      padding-bottom: 15px;
-      border: 0;
-      border-radius: 0;
-      margin-bottom: 0;
-      font-size: 12px;
-      letter-spacing: 5px;
-  }
-  .navbar-nav  li a:hover {
-      color: #1abc9c !important;
-  }
 </style>
-
 <body>
+<script>
+
+</script>
 <div class="container">
 <div class="navbar-header">
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -51,26 +34,36 @@ body {
         <span class="icon-bar"></span>                        
       </button>
       <a class="navbar-brand" align="left" href="#">MakingFriends.com</a>
-    </div>
- <div class="container-fluid bg-1 text-center">
- <img src="https://media.tenor.co/images/b3f33ac02643a0a89f55e22a6d03e9b6/tenor.gif" class="img-responsive img-circle margin" style="display:inline" alt="people" width="400" height="300">   
-<input type="hidden" name="uname" value='${uname}'/>
-<table align ="Center" style="margin-top:0px" class = "ex1">
+    </div> 
+    <table align="center">
 <tr>
-<form action="settime" method="post">
-<td><input type ="submit" name="Set Availability" button class ="btn btn-info" value ="Set Availability"/></td>
-</form>
-<form action="search" method="post">
-<td><input type ="submit" name="Search" button class ="btn btn-info" value ="Search"/></td>
+<form action="admin" method="post">
+<td><input type ="submit" name="HOME" button class ="btn btn-info" value ="HOME"/></td>
 </form>
 </tr>
+</table>   	
+
+<table class = "ex1">
+<form action="TakeAction" method="post">
 <tr>
-<form action="home" method="post">
-<td align ="center"><input type ="submit" name="HOME" button class ="btn btn-info" value ="HOME"/></td>
-</form>
+<th>Username</th>
+	<td><select name ="user1">
+	<option>select</option>
+	 <c:forEach var="li" items="${users}" >
+	<option>${li}</option>
+	</c:forEach>
+	</select>
+	</td>
 </tr>
+<tr>
+
+<td><input type ="submit"  value ="SUBMIT"/></td>
+
+</tr>
+</form>
 </table>
-</div>
+</form>
+
 </div>
 </body>
 </html>
