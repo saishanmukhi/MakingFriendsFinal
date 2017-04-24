@@ -39,7 +39,7 @@ HashMap<String, Integer> hmap=new HashMap<String, Integer>();
               " (case when tvmovies = 1 then 'tvmovies' end),"+
               " (case when youtubemedia = 1 then 'youtubemedia' end),"+
               " (case when arts = 1 then 'arts' end)"+
-             ") from interestmock where username='"+uname+"' ";
+             ") from interest where username='"+uname+"' ";
 	        ResultSet rs3 = st3.executeQuery(q4);
             while(rs3.next())
             {
@@ -56,14 +56,14 @@ HashMap<String, Integer> hmap=new HashMap<String, Integer>();
             }
             st3.close();
            Statement st = con.createStatement();
-            String q1 = "select count(username)from userdatamock where username != '"+uname+"'";
+            String q1 = "select count(username)from userdata where username != '"+uname+"'";
             ResultSet rs = st.executeQuery(q1);
             while(rs.next())
             {
             	count = rs.getInt(1);
             	System.out.println(count);
             	Statement st1 = con.createStatement();
-                String q2 = "select username from userdatamock where username != '"+uname+"'";
+                String q2 = "select username from userdata where username != '"+uname+"'";
                 ResultSet rs1 = st1.executeQuery(q2);
                 while(rs1.next())
                 {
@@ -82,7 +82,7 @@ HashMap<String, Integer> hmap=new HashMap<String, Integer>();
                           " (case when tvmovies = 1 then 'tvmovies' end),"+
                           " (case when youtubemedia = 1 then 'youtubemedia' end),"+
                           " (case when arts = 1 then 'arts' end)"+
-                         ") from interestmock where username='"+pname+"' ";
+                         ") from interest where username='"+pname+"' ";
          	         ResultSet rs2 = st2.executeQuery(q3);
          	         while(rs2.next())
          	         {

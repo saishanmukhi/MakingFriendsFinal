@@ -14,24 +14,36 @@ public class event
 		this.t = to;
 		this.d = description;
 	}
-	public String getName()
-	{
+	public String getN() {
 		return n;
 	}
-	public String getLocation()
-	{
+	public void setN(String n) {
+		this.n = n;
+	}
+	public String getL() {
 		return l;
 	}
-	public Timestamp getFrom()
-	{
-		return f;
+	public void setL(String l) {
+		this.l = l;
 	}
-	public Timestamp getTo()
-	{
-		return t;
-	}
-	public String getDescription()
-	{
+	public String getD() {
 		return d;
 	}
+	public void setD(String d) {
+		this.d = d;
+	}
+	public Timestamp getF() {
+		return f;
+	}
+	public void setF(Timestamp f) {
+		this.f = f;
+	}
+	public Timestamp getT() {
+		return t;
+	}
+	public void setT(Timestamp t) {
+		this.t = t;
+	}
+	
+	
 }

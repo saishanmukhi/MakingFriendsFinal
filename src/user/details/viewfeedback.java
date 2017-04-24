@@ -55,11 +55,21 @@ public class viewfeedback extends HttpServlet {
 		{
 			dbconnect db = new dbconnect();
 			Connection con = db.connect();
-			Statement st = con.createStatement();
-            String q1 = "select username,rating,comment from feedback";
-            ResultSet rs = st.executeQuery(q1);
+			
+            
+            Statement st1 = con.createStatement();
+            String q2 = "select avg(rating) from feedback";
+            ResultSet rs1 = st1.executeQuery(q2);
+            int count = 0;
+            
+            while(rs1.next()){
+            	count = rs1.getInt(1);
+            }
             String username=null,comment=null;
             int rating=0;
+            Statement st = con.createStatement();
+            String q1 = "select username,rating,comment from feedback";
+            ResultSet rs = st.executeQuery(q1);
             while(rs.next())
             {
             	username =rs.getString(1);
@@ -81,10 +91,14 @@ public class viewfeedback extends HttpServlet {
     		{
     			System.out.println("feedback recieved");
     			session.setAttribute("feedback",text);
+    			session.setAttribute("avg", count);
     	      	RequestDispatcher dispatcher = request.getRequestDispatcher("/viewfeedback.jsp");
     		    dispatcher.forward(request, response);
     		}
+           st.close();
            
+            st1.close();
+            con.close();
 		}
 		catch(SQLException e)
         {

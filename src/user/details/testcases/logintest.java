@@ -16,6 +16,7 @@ public class logintest {
         assertEquals("sai@1234",h1.logintest("shanmukhi"));
         assertNotEquals("sai123", h1.logintest("shanmukhi"));
         assertNotEquals("", h1.logintest("shanmukhi"));
+        assertEquals("admin",h1.logintest("admin"));
     }
 
 }

@@ -79,11 +79,12 @@
 <div class="container-fluid bg-1 text-center">
   <h3 class="margin">Making Friends</h3>
   <img src="http://www.hotwater911.com/wp-content/uploads/2011/08/HotWater911-Making-Friends.jpg" class="img-responsive img-circle margin" style="display:inline" alt="Bird" width="350" height="350">
-  <h3>Join in and socialize!</h3>
-</div>
+    <h3>Join in and socialize!</h3>
 <form action ="viewfeedback" method="post">
-<div class="col-md-4 text-center">
-<input type ="submit" class ="btn btn-info" value ="FEEDBACK"/>
+<div class="col-md-12 text-right">
+<input type ="submit" class ="btn btn-info" value ="VIEW FEEDBACK"/>
+</div>
+
 </div>
 </form>
 </body>

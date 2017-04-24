@@ -99,7 +99,17 @@ table.ex1 {
       </button>
       <a class="navbar-brand" align="left" href="#">MakingFriends.com</a>
     </div>    	
-    
+  <div class = "page-header">
+    <div class="btn-toolbar pull-right">
+    	<table align ="right" style="margin-top:10px" class = "ex1">
+    	<tr>
+        <form action="home" method="post">
+		<td><input type ="submit" name="HOME" button class ="btn btn-info" value ="HOME"/></td>
+		</form>
+         </tr>
+        </table>
+    </div>
+ </div>  
 <div class="container-fluid bg-1 text-center">
 <h3 align="center">EVENT</h3> 
 <form action="createevent" method="post">

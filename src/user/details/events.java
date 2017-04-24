@@ -74,9 +74,8 @@ public class events extends HttpServlet {
             
             if(text.isEmpty())
     		{
-    			
-    			String pq = "No Events avaliable at this time.";
-        		request.setAttribute("events",pq);
+       			String pq = "No Events to Display";
+        		request.setAttribute("noevents",pq);
         		request.setAttribute("uname",uname);
     	      	RequestDispatcher dispatcher = request.getRequestDispatcher("/events.jsp");
     		    dispatcher.forward(request, response);

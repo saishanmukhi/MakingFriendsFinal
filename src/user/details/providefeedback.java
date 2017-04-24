@@ -35,7 +35,7 @@ public class providefeedback extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		//response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	/**
@@ -44,18 +44,15 @@ public class providefeedback extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
+		String rate=null;
 		HttpSession session = request.getSession();
 		uname = (String) session.getAttribute("uname");
-		PrintWriter out = response.getWriter();
 		response.setContentType("text/html");
 		String comment = request.getParameter("comment").toString();
-		
-		String rate = request.getParameter("rating").toString();
-		
-		
-		boolean insert = false;
+		rate = request.getParameter("rating").toString();
+		//boolean insert = false;
 		validate v = new validate();
-		if(v.validateRating(rate))
+		if(v.validateRating(request.getParameter("rating").toString()))
 		{
 			int rating =Integer.parseInt(rate);
 			System.out.println(uname + " " + rating + " stars\n" + comment);
@@ -63,7 +60,8 @@ public class providefeedback extends HttpServlet {
 			{
 				dbconnect db = new dbconnect();
 				Connection con = db.connect();
-				Statement st1 = con.createStatement();
+				givefeedback(con,uname,rating,comment);
+				/*Statement st1 = con.createStatement();
 				String q2 = "select username from feedback where username='"+uname+"'";
 				ResultSet rs1 = st1.executeQuery(q2);
 				while(rs1.next())
@@ -75,7 +73,7 @@ public class providefeedback extends HttpServlet {
             		System.out.println("updating feedback values");
            			String query = "update feedback set rating = ?,comment = ? where username = ?";
             		java.sql.PreparedStatement preparedStmt = con.prepareStatement(query);
-            		preparedStmt.setString(1,Integer.toString(rating));
+            		preparedStmt.setInt(1,rating);
             		preparedStmt.setString(2,comment);
             		preparedStmt.setString(3,uname);
             		preparedStmt.executeUpdate();
@@ -93,17 +91,67 @@ public class providefeedback extends HttpServlet {
     		        st.executeUpdate(q1);
     		        System.out.println("inserted feedback");
             		st.close();
-            	}
+            	}*/
 	        	session.setAttribute("uname", uname);
 	        	RequestDispatcher dispatcher = request.getRequestDispatcher("/home");
 	            dispatcher.forward(request, response);
 			    con.close();
-			    insert = true;
+			   
 			}
 			catch(SQLException e)
 			{
 				System.out.println(e.getMessage());
 			}
+		}
+		else
+		{
+			session.setAttribute("uname", uname);
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/providefeedback.jsp");
+            dispatcher.forward(request, response);
+		   
+		}
+	}
+
+	public void givefeedback(Connection con, String uname, int rating, String comment) {
+		// TODO Auto-generated method stub
+		try
+		{
+			boolean insert=false;
+			Statement st1 = con.createStatement();
+			String q2 = "select username from feedback where username='"+uname+"'";
+			ResultSet rs1 = st1.executeQuery(q2);
+			while(rs1.next())
+     		{
+        		insert=true;
+        	}
+        	if(insert==true)
+        	{
+        		System.out.println("updating feedback values");
+       			String query = "update feedback set rating = ?,comment = ? where username = ?";
+        		java.sql.PreparedStatement preparedStmt = con.prepareStatement(query);
+        		preparedStmt.setInt(1,rating);
+        		preparedStmt.setString(2,comment);
+        		preparedStmt.setString(3,uname);
+        		preparedStmt.executeUpdate();
+        		preparedStmt.close();
+        	}
+        	else
+        	{
+        		System.out.println("inserting feedback values");
+        		Statement st = con.createStatement();
+		        String q1;
+		        if(comment == null)
+		        	q1 = "insert into feedback values('" + uname + "','"+rating+"',default)";
+		        else
+		        	q1 = "insert into feedback values('" + uname + "','"+rating+"','"+comment+"')";
+		        st.executeUpdate(q1);
+		        System.out.println("inserted feedback");
+        		st.close();
+        	}
+		}
+		catch(SQLException e)
+		{
+			System.out.println(e.getMessage());
 		}
 	}
 

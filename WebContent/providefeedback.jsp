@@ -15,6 +15,9 @@
         <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
         <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
         <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+        <link rel="stylesheet" href="jquery.rating.css">
+        <script src="jquery.js"></script>
+        <script src="jquery.rating.js"></script>
       <style>
 table.ex1 {
     border-collapse: separate;
@@ -48,11 +51,21 @@ body {
   }
   input[type="radio"]{
   margin: 0 20px 0 20px;
+  
 }
+h3{
+    color: #3399ff;
+    }
 </style>
  
 </head>
 <body>
+<script>
+function myfunction(){
+	document.getElementById("submit").disabled = false;
+}
+
+</script>
 <div class="container">
 <div class="navbar-header">
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -61,27 +74,40 @@ body {
         <span class="icon-bar"></span>                        
       </button>
       <a class="navbar-brand" align="left" href="#">MakingFriends.com</a>
-    </div>    	
+    </div>  
+    <div class = "page-header">
+    <div class="btn-toolbar pull-right">
+    	<table align ="right" style="margin-top:10px" class = "ex1">
+    	<tr>
+        <form action="home" method="post">
+		<td><input type ="submit" name="HOME" button class ="btn btn-info" value ="HOME"/></td>
+		</form>
+         </tr>
+        </table>
+    </div>
+ </div>  	
 <div class="container-fluid bg-1 text-center"> 
 <h3>FEEDBACK</h3> 
 <form action="providefeedback" method="post">
-<table class = "ex1">
+<table class = "ex1" align="Center">
 <tr>
 <th>RATINGS</th>
-	<td><input type = "radio" name ="rating" value ="1" /></td>
-	<td><input type = "radio" name ="rating" value ="2" /></td>
-	<td><input type = "radio" name ="rating" value ="3" /></td>
-	<td><input type = "radio" name ="rating" value ="4" /></td>
-	<td><input type = "radio" name ="rating" value ="5" /></td>
+	<td><input type = "radio" name ="rating" value ="1" class ="star" id="rating" onclick="myfunction()"/></td>
+	<td><input type = "radio" name ="rating" value ="2" class ="star" id="rating" onclick="myfunction()"/></td>
+	<td><input type = "radio" name ="rating" value ="3" class ="star" id="rating" onclick="myfunction()"/></td>
+	<td><input type = "radio" name ="rating" value ="4" class ="star" id="rating" onclick="myfunction()"/></td>
+	<td><input type = "radio" name ="rating" value ="5" class ="star" id="rating" onclick="myfunction()"/></td>
 </tr>
 </table>
-<table class="ex1">
+<table class="ex1" align="Center">
 <tr>
 <th>COMMENT</th>
 	<td><input type = "text" name = "comment"/></td>
 </tr>
+</table>
+<table class="ex1" align="Center">
 <tr>
-<td align="center"><input type ="submit" value ="SUBMIT"/></td>
+<td align="center"><input type ="submit" button class ="btn btn-info" value ="SUBMIT" disabled="disabled" id ="submit"/></td>
 </tr>
 <tr>
 <td><input type="hidden" name="uname" value='${uname}'/></td>

@@ -117,26 +117,25 @@ public class validate {
 			return check;
 		}
 		public boolean validateDate(String date)
-        {
-            Calendar cal = Calendar.getInstance();
-            boolean check = false;        
-            
-            if(date.matches("\\d{4}-\\d{2}-\\d{2}"))
-            {
-                int y = Integer.parseInt(date.substring(0, 4));
-                int m = Integer.parseInt(date.substring(5, 7));
-                int d = Integer.parseInt(date.substring(8, date.length()));
-                
-                if(m > cal.get(Calendar.MONTH) && m <= 12 && y >= cal.get(Calendar.YEAR))
-                {
-                    if(d >= cal.get(Calendar.DATE) && d <= dayInMonth(y, m))
-                        check = true;
-                }
-            }
-            return check;
-        }
-        
-        public boolean validateFromTime(String from, String date)
+		{
+			Calendar cal = Calendar.getInstance();
+			boolean check = false;		
+			
+			if(date.matches("\\d{4}-\\d{2}-\\d{2}"))
+			{
+				int y = Integer.parseInt(date.substring(0, 4));
+				int m = Integer.parseInt(date.substring(5, 7));
+				int d = Integer.parseInt(date.substring(8, date.length()));
+				
+				if(m > cal.get(Calendar.MONTH) && m <= 12 && y >= cal.get(Calendar.YEAR))
+				{
+					if(d >= cal.get(Calendar.DATE) && d <= dayInMonth(y, m))
+						check = true;
+				}
+			}
+			return check;
+		}
+		public boolean validateFromTime(String from, String date)
         {
             Calendar cal = Calendar.getInstance();
             boolean check = false;    
@@ -152,30 +151,30 @@ public class validate {
                 {
                     if(h == cal.get(Calendar.HOUR_OF_DAY) && m >= cal.get(Calendar.MINUTE))
                     {
-                        if(h == 23 && m <= 29 && m >= 0)
-                            check = true;
-                        else if(h != 23 && m >= 0 && m <= 59)
-                            check = true;
+                    	if(h == 23 && m <= 29 && m >= 0)
+                    		check = true;
+                    	else if(h != 23 && m >= 0 && m <= 59)
+                    		check = true;
                     }
                     else if(h != cal.get(Calendar.HOUR_OF_DAY))
                     {
-                        if(h != 23 && m >= 0 && m <= 59)
-                            check = true;
-                        else if(h == 23 && m <= 29 && m >= 0)
-                            check = true;
+                    	if(h != 23 && m >= 0 && m <= 59)
+                    		check = true;
+                    	else if(h == 23 && m <= 29 && m >= 0)
+                    		check = true;
                     }
                 }
                 else if((d != cal.get(Calendar.DATE) || y != cal.get(Calendar.YEAR) || mon != (cal.get(Calendar.MONTH) + 1)))
                 {
-                    if(h >= 0 && h < 23 && m >= 0 && m <= 59)
-                        check = true;
-                    else if(h == 23 && m <= 29 && m >= 0)
-                        check = true;
+                	if(h >= 0 && h < 23 && m >= 0 && m <= 59)
+                		check = true;
+                	else if(h == 23 && m <= 29 && m >= 0)
+                		check = true;
                 }
             }
             return check;
         }
-        public boolean validateToTime(String from, String to, String date)
+		public boolean validateToTime(String from, String to, String date)
 		{
 			Calendar cal = Calendar.getInstance();
             boolean check = false;    
@@ -236,7 +235,7 @@ public class validate {
 		private boolean validDate(String beginDate, String endDate)
 		{
 			Calendar fromDate = Calendar.getInstance(), toDate = Calendar.getInstance();
-			fromDate.set(Integer.parseInt(beginDate.substring(6,10)), Integer.parseInt(beginDate.substring(0,2)), Integer.parseInt(beginDate.substring(3,5)), Integer.parseInt(beginDate.substring(11,13)), Integer.parseInt(beginDate.substring(14,16)));
+			fromDate.set(Integer.parseInt(beginDate.substring(0,4)), Integer.parseInt(beginDate.substring(5,7)), Integer.parseInt(beginDate.substring(7,9)), Integer.parseInt(beginDate.substring(11,13)), Integer.parseInt(beginDate.substring(14,16)));
 			toDate.set(Integer.parseInt(endDate.substring(0,4)), Integer.parseInt(endDate.substring(5,7)), Integer.parseInt(endDate.substring(7,9)), Integer.parseInt(endDate.substring(11,13)), Integer.parseInt(endDate.substring(14,16)));
             boolean check = false;
             if(fromDate.compareTo(toDate) == -1)
@@ -255,23 +254,23 @@ public class validate {
             return check;
 		}
 		public boolean validTime(String from, String to)
-        {
-            boolean check = false;
-            
-            if(from.matches("\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}") && to.matches("\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}"))
-            {
-                String fromDate = from.substring(0,10);
-                String toDate = to.substring(0,10);
-                
-                if(validateDate(fromDate) && validateDate(toDate))
-                {
-                    if(validDate(from, to))
-                        check = true;
-                }
-            }
-                        
-            return check;
-        }
+		{
+			boolean check = false;
+			
+			if(from.matches("\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}") && to.matches("\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}"))
+			{
+				String fromDate = from.substring(0,10);
+				String toDate = to.substring(0,10);
+				
+				if(validateDate(fromDate) && validateDate(toDate))
+				{
+					if(validDate(from, to))
+						check = true;
+				}
+			}
+						
+			return check;
+		}
 		public boolean validateRating(String userRating)
 		{
 			boolean check = false;

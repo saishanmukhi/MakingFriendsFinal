@@ -47,6 +47,7 @@ public class createevent extends HttpServlet {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 		HttpSession session = request.getSession();
+		uname = (String) session.getAttribute("uname");
 		PrintWriter out = response.getWriter();
 		response.setContentType("text/html");
 		String eventname = request.getParameter("eventname").toString();
@@ -57,16 +58,15 @@ public class createevent extends HttpServlet {
 		String totime = request.getParameter("timeend").toString();
 		String description = request.getParameter("description").toString();
 		
+		
 		boolean insert = false;
 		validate v = new validate();
 		if(v.validEventText(eventname))
 		{
-			System.out.println("validated 1");
-		
+			System.out.println("yes");
 			if(v.validEventText(location))
 			{
-				System.out.println("validated 2");
-			
+				System.out.println("yes2");
 				if(fromdate.matches("\\d{2}/\\d{2}/\\d{4}") && todate.matches("\\d{2}/\\d{2}/\\d{4}") && fromtime.matches("\\d{2}:\\d{2}") && totime.matches("\\d{2}:\\d{2}"))
 				{
 					String fm = fromdate.substring(0, 2);
@@ -78,56 +78,76 @@ public class createevent extends HttpServlet {
 					
 					String from = fy + "-" + fm + "-" + fd + " " + fromtime;
 					String to = ty + "-" + tm + "-" + td + " " + totime;
-						System.out.println("printed... " + from + to);
-				if(v.validTime(from, to))
-				{
-					System.out.println("yes validated");
-					try
+					
+					if(v.validTime(from, to))
 					{
-						dbconnect db = new dbconnect();
-						Connection con = db.connect();
-				        Statement st = con.createStatement();
-				        String q1;
-				        if(description == null)
-				        	q1 = "insert into events values('" + eventname + "','"+location+"','"+from+"','"+to+"',default)";
-				        else
-				        	q1 = "insert into events values('" + eventname + "','"+location+"','"+from+"','"+to+"','"+description+"')";
-				        st.executeUpdate(q1);
-			            System.out.println("inserted event");
-	            		session.setAttribute("uname", uname);
-	            		RequestDispatcher dispatcher = request.getRequestDispatcher("/home");
+						System.out.println("yes validated");
+						try
+						{					        
+					        if(v.validEventText(description))
+					        {
+					        	dbconnect db = new dbconnect();
+								Connection con = db.connect();
+								insert(con,eventname,location,from,to,description);
+					        	/*Statement st2 = con.createStatement();
+						        String q2 = "insert into events values('" + eventname + "','"+location+"','"+from+"','"+to+"','"+description+"')";
+						        st2.executeUpdate(q2);
+						        st2.close();
+						        con.close();*/
+						        insert = true;
+					        }	
+					        else
+					        {
+					        	dbconnect db2 = new dbconnect();
+								Connection con2 = db2.connect();
+								description="No Description";
+								insert(con2,eventname,location,from,to,description);
+					        	/*Statement st1 = con2.createStatement();
+						        String q1 = "insert into events values('" + eventname + "','"+location+"','"+from+"','"+to+"',default)";
+						        st1.executeUpdate(q1);
+						        st1.close();
+						        con2.close();*/
+						        insert = true;
+					        }
+				            System.out.println("inserted event");
+		            		session.setAttribute("uname", uname);
+		            		RequestDispatcher dispatcher = request.getRequestDispatcher("/home");
+		            	    dispatcher.forward(request, response);
+						}
+						catch(SQLException e)
+						{
+							System.out.println(e.getMessage());
+						}
+					}
+					else
+					{
+						session.setAttribute("uname", uname);
+	            		RequestDispatcher dispatcher = request.getRequestDispatcher("/createevent.jsp");
 	            	    dispatcher.forward(request, response);
-	            	    st.close();
-				        con.close();
-				        insert = true;
-					}
-					catch(SQLException e)
-					{
-						System.out.println(e.getMessage());
 					}
 				}
-				else
-				{
-					/*request.setAttribute("dateentry","InvalidDate"); 
-					RequestDispatcher dispatcher = request.getRequestDispatcher("/createevent.jsp");
-            	    dispatcher.forward(request, response);*/
-				}
+				
 			}
 			else
 			{
-				/*request.setAttribute("location", "!InvalidLocation"); 
-				RequestDispatcher dispatcher = request.getRequestDispatcher("/createevent.jsp");
-        	    dispatcher.forward(request, response);*/
+				session.setAttribute("uname", uname);
+        		RequestDispatcher dispatcher = request.getRequestDispatcher("/createevent.jsp");
+        	    dispatcher.forward(request, response);
 			}
 		}
 		else
 		{
-			/*request.setAttribute("eventname", "!InvalidName"); 
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/createevent.jsp");
-    	    dispatcher.forward(request, response);*/
+			session.setAttribute("uname", uname);
+    		RequestDispatcher dispatcher = request.getRequestDispatcher("/createevent.jsp");
+    	    dispatcher.forward(request, response);
 		}
-		
 	}
-
-}
+	public void insert(Connection con2, String eventname, String location, String from, String to, String description) throws SQLException
+	{
+		Statement st1 = con2.createStatement();
+        String q1 = "insert into events values('" + eventname + "','"+location+"','"+from+"','"+to+"','"+description+"')";
+        st1.executeUpdate(q1);
+        st1.close();
+        con2.close();
+	}
 }

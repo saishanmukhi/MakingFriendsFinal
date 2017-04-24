@@ -11,42 +11,125 @@
   <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<title>Notifications</title>
+  <link rel="stylesheet" href="jquery.rating.css">
+        <script src="jquery.js"></script>
+        <script src="jquery.rating.js"></script>
+<title>viewfeedback</title>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js"></script>
+	<script type="text/javascript">
+   		$(function() {    		
+			
+				$('p').html('<span class="stars">'+3+'</span>');
+				$('span.stars').stars();
+			   		
+			
+		});
+
+		$.fn.stars = function() {
+			return $(this).each(function() {
+				$(this).html($('<span />').width(Math.max(0, (Math.min(5, parseFloat($(this).html())))) * 16));
+			});
+		}
+	</script>
+	<style type="text/css">
+		span.stars, span.stars span {
+			display: block;
+			background: url('https://www.everythingfrontend.com/samples/star-rating/star.png') 0 -16px repeat-x;
+			width: 80px;
+			height: 16px;
+		}
+	
+		span.stars span {
+			background-position: 0 0;
+		}
+	</style>
 </head>
-<style type="text/css">
-th
-{
-    padding:0 15px 0 15px;
-}
-td
-{
-    padding:0 15px 0 15px;
-}
-</style>
+ <style>
+  body {
+      font: 20px Montserrat, sans-serif;
+      line-height: 1.8;
+     background-color: #1abc9c;
+  }
+  p {font-size: 16px;}
+  .margin {margin-bottom: 45px;}
+  .bg-1 { 
+      background-color: #1abc9c; /* Green */
+      color: #ffffff;
+  }
+  .bg-2 { 
+      background-color: #474e5d; /* Dark Blue */
+      color: #ffffff;
+  }
+  .bg-3 { 
+      background-color: #ffffff; /* White */
+      color: #555555;
+  }
+  .bg-4 { 
+      background-color: #2f2f2f; /* Black Gray */
+      color: #fff;
+  }
+  .container-fluid {
+      padding-top: 70px;
+      padding-bottom: 70px;
+      background-color: #1abc9c; /* Green */
+   color: #ffffff;
+  }
+  .navbar {
+      padding-top: 15px;
+      padding-bottom: 15px;
+      border: 0;
+      border-radius: 0;
+      margin-bottom: 0;
+      font-size: 12px;
+      letter-spacing: 5px;
+  }
+  .navbar-nav  li a:hover {
+      color: #1abc9c !important;
+  }
+  </style>
 <body>
-<div class="container">
-<div class="navbar-header">
+<!-- Navbar -->
+<nav class="navbar navbar-default">
+  <div class="container">
+    <div class="navbar-header">
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>                        
       </button>
-      <a class="navbar-brand" align="left" href="#">MakingFriends.com</a>
+      <a class="navbar-brand" href="#">MakingFriends.com</a>
     </div>
-</div>
- <table border ="5" align="Center">
-   <tr>
-   <th>Username</th>
-   <th>Rating</th>
-   <th>Comment</th>
-   </tr>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="index1.jsp"><input type ="submit" value ="BACK"/></a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<!-- First Container -->
+<div class="container-fluid bg-1 text-center">
+<table bgcolor="#4286f4">
+<tr>
+<td>
+Average Rating &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</td>
+<td>
+<span class="stars">${avg}</span>
+</td>
+</tr>
+</table>
+
+ <table >
+
    <c:forEach var="viewfeedback" items="${feedback}" >
    <tr>
-    <td>${viewfeedback.name}</td>
-    <td>${viewfeedback.userRating}</td>
-    <td>${viewfeedback.userComment}</td>
+    <td>${viewfeedback.name}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </td> 
+    <td><span class="stars">${viewfeedback.userRating}</span></td>
+    <td> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ${viewfeedback.userComment}</td>
     </tr>
 </c:forEach>
 </table>
+</div>
+
 </body>
 </html>

@@ -75,7 +75,17 @@ table.ex1 {
       </button>
       <a class="navbar-brand" align="left" href="#">MakingFriends.com</a>
     </div>
-</div>
+<div class = "page-header">
+    <div class="btn-toolbar pull-right">
+    	<table align ="right" style="margin-top:10px" class = "ex1">
+    	<tr>
+        <form action="home" method="post">
+		<td><input type ="submit" name="HOME" button class ="btn btn-info" value ="HOME"/></td>
+		</form>
+         </tr>
+        </table>
+    </div>
+ </div>
 <div class="container-fluid bg-1 text-center">
 
 <h3 align="center">EVENTS</h3> 
@@ -89,11 +99,12 @@ table.ex1 {
    </tr>
 <c:forEach var="event" items="${events}">
    <tr>
-    <c:out value="${event.n}"/>
-    <c:out value="${event.l}"/>
-    <c:out value="${event.f}"/>
-    <c:out value="${event.t}"/>
-    <c:out value="${event.d}"/>
+    <td>${event.n}</td>
+        <td>${event.l}</td>
+        <td>${event.f}</td>
+        <td>${event.t}</td>
+        <td>${event.d}</td>
+
    </tr>
 </c:forEach>
 </table>
@@ -105,6 +116,6 @@ table.ex1 {
     </form></td>
     </tr>
 </table>
-
+</div>
 </body>
 </html>

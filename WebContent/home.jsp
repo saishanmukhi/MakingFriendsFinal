@@ -67,7 +67,9 @@ table.ex1 {
 <form action="FeedbackControl" method="post">
 <td align="right"><input type ="submit" name="FEEDBACK" button class ="btn btn-info" value ="FEEDBACK"/></td>
 </form>
-<td><a href ="events.jsp"><input type ="submit" button class ="btn btn-info" value ="EVENTS"/></a></td>
+<form action="events" method="post">
+<td align="right"><input type ="submit" name="EVENTS" button class ="btn btn-info" value ="EVENTS"/></td>
+</form>
 </tr>
 </table>
  </div>

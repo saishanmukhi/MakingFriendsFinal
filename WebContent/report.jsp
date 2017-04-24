@@ -13,9 +13,46 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <title>REPORT</title>
 </head>
+<style type="text/css">
+th
+{
+    padding:0 15px 0 15px;
+}
+td
+{
+    padding:0 15px 0 15px;
+}
+</style>
 <style>
 .btn {
-    margin: 10px auto;
+    margin: 15px auto;
+}
+body {
+      font: 20px Montserrat, sans-serif;
+      line-height: 1.8;
+     
+  }
+  p {font-size: 16px;}
+  .margin {margin-bottom: 45px;}
+ 
+  .container-fluid {
+      padding-top: 70px;
+      padding-bottom: 70px;
+  }
+  .navbar {
+      padding-top: 15px;
+      padding-bottom: 15px;
+      border: 0;
+      border-radius: 0;
+      margin-bottom: 0;
+      font-size: 12px;
+      letter-spacing: 5px;
+  }
+  .navbar-nav  li a:hover {
+      color: #1abc9c !important;
+  }
+table{
+	margin: 0 auto;
 }
 table.ex1 {
     border-collapse: separate;
@@ -46,18 +83,24 @@ function myfunction(){
       </button>
       <a class="navbar-brand" align="left" href="#">MakingFriends.com</a>
     </div> 
-    <table align="center">
-<tr>
-<form action="home" method="post">
-<td><input type ="submit" name="HOME" button class ="btn btn-info" value ="HOME"/></td>
-</form>
-</tr>
-</table>   	
+    <div class = "page-header">
+    <div class="btn-toolbar pull-right">
+    	<table align ="right" style="margin-top:10px" class = "ex1">
+    	<tr>
+        <form action="home" method="post">
+		<td><input type ="submit" name="HOME" button class ="btn btn-info" value ="HOME"/></td>
+		</form>
+         </tr>
+        </table>
+    </div>
+ </div>
+<div class="container-fluid bg-1 text-center">  	
 <form action="report1" method="post">
 <table class = "ex1">
 <tr>
 <th>Username</th>
 	<td><select name ="usernames" id ="usernames">
+	<option>SELECT</option>
 	 <c:forEach var="map" items="${map}" >
 	<option>${map.key}</option>
 	</c:forEach>
@@ -69,16 +112,17 @@ function myfunction(){
 	<td><input type ="text" name ="reason" onclick="myfunction()" id ="reason"/></td>
 </tr>
 <tr>
-<div class="col-md-4 text-center">
+</table>
+
+<table align = "center" class = "ex1">
+<tr>
 <td><input type ="submit" name="REPORT" button class ="btn btn-info" value ="REPORT" disabled="disabled" id ="submit"/></td>
 </tr>
-</div>
-<tr>
-<td><input type="hidden" name="uname" value='${uname}'/></td>
-</tr>
 </table>
-</form>
 
+<input type="hidden" name="uname" value='${uname}'/>
+</form>
+</div>
 </div>
 </body>
 </html>

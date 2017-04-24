@@ -36,7 +36,7 @@ public class admin extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		//response.getWriter().append("Served at: ").append(request.getContextPath());
 		
 	}
 
@@ -48,14 +48,14 @@ public class admin extends HttpServlet {
 		doGet(request, response);
 		HttpSession session = request.getSession();
 		ArrayList<UserReports>text;
+		dbconnect db = new dbconnect();
+		Connection con = db.connect();
 		text = new ArrayList<UserReports>();
 		
-			text=getReport();
+			text=getReport(con);
             if(text.isEmpty())
     		{
-    			
-        		
-    	      	RequestDispatcher dispatcher = request.getRequestDispatcher("/admin.jsp");
+      	      	RequestDispatcher dispatcher = request.getRequestDispatcher("/admin.jsp");
     		    dispatcher.forward(request, response);
     		}
     		else
@@ -69,14 +69,13 @@ public class admin extends HttpServlet {
 		
 	}
 	
-	public ArrayList<UserReports> getReport()
+	public ArrayList<UserReports> getReport(Connection con)
 	{
 		ArrayList<UserReports>text1;
 		text1 = new ArrayList<UserReports>();
 		try
 		{
-			dbconnect db = new dbconnect();
-			Connection con = db.connect();
+			
 			Statement st = con.createStatement();
             String q1 = "select * from report";
             ResultSet rs = st.executeQuery(q1);
