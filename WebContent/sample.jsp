@@ -12,30 +12,10 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <title align ="center">LOGIN</title>
-</head>
-<c:if test="${not empty loginError}">
-    <script>alert("Incorrect Username or Password.Try Again!");
-</script>
-</c:if>
+
 <style>
- 
-    .navbar {
-      padding-top: 15px;
-      padding-bottom: 15px;
-      border: 0;
-      border-radius: 0;
-      margin-bottom: 0;
-      font-size: 12px;
-      letter-spacing: 5px;
-  }
-  .navbar-nav  li a:hover {
-      color: #1abc9c !important;
-  }
-.btn {
-    margin: 10px auto;
-}
 .wrapper {    
-	margin-top: 150px;
+	margin-top: 80px;
 	margin-bottom: 20px;
 }
 
@@ -82,40 +62,21 @@ input[type="password"] {
   background-image: linear-gradient(to right, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1 87.5%, #62c2e4 87.5%, #62c2e4);
 }
 </style>
+</head>
 <body>
-<div class="container">
-<div class = "page-header">
-    <div class="btn-toolbar pull-right">
-    	<table align ="right" style="margin-top:10px" class = "ex1">
-    	<tr>
-		<form action="index1.jsp">
-		<td><input type ="submit" name="BACK" button class ="btn btn-info" value ="BACK"/></td>
-		</form>
-         </tr>
-        </table>
-    </div>
-<div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>                        
-      </button>
-      <a class="navbar-brand" align="left" href="#">MakingFriends.com</a>
-    </div>
-      </div>  
-<div class="container-fluid bg-1 text-center">
+
+<div class = "container">
 	<div class="wrapper">
 		<form action="login" method="post" name="Login_Form" class="form-signin">       
 		    <h3 class="form-signin-heading">Welcome Back! Please Sign In</h3>
 			  <hr class="colorgraph"><br>
 			  
 			  <input type="text" class="form-control" name="username" placeholder="Username" required="" autofocus="" />
-			  <input type="password" class="form-control" name="password" placeholder="Password" required=""/>     		  
+			  <input type="password" class="form-control" name="Ppassword" placeholder="Password" required=""/>     		  
 			 
 			  <button class="btn btn-lg btn-primary btn-block"  name="Submit" value="Login" type="Submit">Login</button>  			
 		</form>			
 	</div>
-</div>
 </div>
 </body>
 </html>

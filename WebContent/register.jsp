@@ -20,6 +20,44 @@
 	text-align: center;
 }
 </style>
+<style>
+  body {
+      font: 20px Montserrat, sans-serif;
+      line-height: 1.8;
+    
+  }
+  p {font-size: 16px;}
+  .margin {margin-bottom: 45px;}
+  
+ 
+  
+  .container-fluid {
+      padding-top: 70px;
+      padding-bottom: 70px;
+  }
+  .navbar {
+      padding-top: 15px;
+      padding-bottom: 15px;
+      border: 0;
+      border-radius: 0;
+      margin-bottom: 0;
+      font-size: 12px;
+      letter-spacing: 5px;
+      background-color: #87CEEB;
+  }
+ 
+  .navbar-nav  li a:hover {
+      color: #1abc9c !important; 
+  }
+  h3{
+    margin-left: 500px;
+  }
+  #myNavbar
+  {
+    backgroung-color : #87CEEB;
+  }
+  
+  </style>
 </head>
 
 
@@ -37,11 +75,29 @@ function myfunction(){
     alert(<c:out value="${Errormessage}" />);
 </script>
 </c:if>
-<div class="page-header">
-<h1 align ="center">SIGN UP</h1>
-</div>
+<div class="container">
+<!-- Navbar -->
+<nav class="navbar navbar-default">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      <a class="navbar-brand" href="#">MakingFriends.com</a>
+      <h3  style="color:#FA8072" >SIGN UP</h3>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="index1.jsp"><input type ="submit" value ="BACK"/></a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
 <form action="reg" method="post">
-<table>
+<table align="Center" style="margin-top:20px">
 <tr>
 <th>NAME</th>
 	<td><input type = "text" name = "name"/></td>
@@ -96,10 +152,13 @@ function myfunction(){
 <tr>
 <td align="left"><input type = "checkbox" onclick="myfunction()" name ="agree" id="check"/> I agree to the <a href = "terms.jsp"/>Terms&Conditions</td>
 </tr>
+</table>
+<table align ="Center">
 <tr>
 <td align="center"><input type ="submit" disabled="disabled" value ="SUBMIT" id ="signup"/></td>
 </tr>
 </table>
 </form>
+</div>
 </body>
 </html>

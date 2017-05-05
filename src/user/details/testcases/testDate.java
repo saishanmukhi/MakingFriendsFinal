@@ -13,7 +13,7 @@ public class testDate {
 	public void dateTest() 
 	{
 		validate r = new validate();
-		assertTrue(r.validateDate("2017-04-09"));
+		assertTrue(r.validateDate("2017-05-26"));
 		assertFalse("the year is before the current year", r.validateDate("2016-04-08"));
 		assertFalse("the month is before the current month", r.validateDate("2017-03-08"));
 		assertFalse("the month is out of bounds", r.validateDate("2017-13-08"));

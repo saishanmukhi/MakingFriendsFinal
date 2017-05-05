@@ -16,7 +16,7 @@ public class mocksearchuserclass {
 			mockdbconnect db = new mockdbconnect();
 			Connection con = db.connect();
 			Statement st1 = con.createStatement();
-            String q2 = "select username from freetimemock where (date1 = '"+date2+"' and ((from1 >= '"+from1+"' and to1 <= '"+to1+"') or (from1 > '"+from1+"' and from1 < '"+to1+"' and to1 > '"+to1+"') or (from1 < '"+from1+"' and to1 > '"+from1+"'))) and username != '"+uname+"' ";
+            String q2 = "select username from freetime where (date1 = '"+date2+"' and ((from1 >= '"+from1+"' and to1 <= '"+to1+"') or (from1 > '"+from1+"' and from1 < '"+to1+"' and to1 > '"+to1+"') or (from1 < '"+from1+"' and to1 > '"+from1+"'))) and username != '"+uname+"' ";
             ResultSet rs1 = st1.executeQuery(q2);
             while(rs1.next())
             {

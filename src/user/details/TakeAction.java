@@ -35,7 +35,7 @@ public class TakeAction extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		//response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	/**
@@ -53,45 +53,34 @@ public class TakeAction extends HttpServlet {
 			dbconnect db = new dbconnect();
 			Connection con = db.connect();
 			int countint = count(con,userreported);
-			/*Statement st = con.createStatement();
-            String q1 = "select count('"+userreported+"') from report";
-            ResultSet rs = st.executeQuery(q1);
-            int countint = 0;
-            while(rs.next())
-            {
-            	countint=rs.getInt(1);
-             }*/
+			
             if(countint==1)
             {
-            	sendmessage sm= new sendmessage();
+                session.setAttribute("users", userreported);
+            	RequestDispatcher dispatcher = request.getRequestDispatcher("/warning.jsp");
+      	      	dispatcher.forward(request, response);
+            	/*sendmessage sm= new sendmessage();
 				LocalDateTime now = LocalDateTime.now();
 		        boolean send1;
 				send1=sm.insertintomessage("admin",userreported,"Issuing this warning because of your inappropriate behavior",now);
 				RequestDispatcher dispatcher = request.getRequestDispatcher("/admin");
-      	      	dispatcher.forward(request, response);
+      	      	dispatcher.forward(request, response);*/
             }
             else if(countint>1)
             {
+            	session.setAttribute("users", userreported);
+            	RequestDispatcher dispatcher = request.getRequestDispatcher("/delete.jsp");
+      	      	dispatcher.forward(request, response);
             	
-        			dbconnect db1 = new dbconnect();
+        			/*dbconnect db1 = new dbconnect();
         			Connection con1 = db1.connect();
         			boolean delete = delete(con1,userreported);
-        			/*Statement st1 = con1.createStatement();
-                    String q2 = "delete from report where reporteduser= '"+userreported+"' ";
-                    st1.executeUpdate(q2); 
-                    String q3 = "delete from userdata where username= '"+userreported+"' ";
-                    st1.executeUpdate(q3); 
-                    String q4 = "delete from messages where receiver= '"+userreported+"' ";
-                    st1.executeUpdate(q4);
-                    String q5 = "delete from freetime where username= '"+userreported+"' ";
-                    st1.executeUpdate(q5);  
-                    String q6 = "delete from interest where username= '"+userreported+"' ";
-                    st1.executeUpdate(q6);  */
+        			
                     if(delete)
                     {
                     RequestDispatcher dispatcher = request.getRequestDispatcher("/admin");
           	      	dispatcher.forward(request, response);
-                    }
+                    }*/
                     
             }
        	}

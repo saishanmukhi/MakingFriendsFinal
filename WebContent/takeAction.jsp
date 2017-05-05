@@ -102,7 +102,7 @@ table.ex1 {
 </table>
 <table>
 <tr>
-<td><input type ="submit"  value ="SUBMIT"/></td>
+<td><input type ="submit"  button class ="btn btn-info" value ="SUBMIT"/></td>
 </tr>
 </table>
 </form>

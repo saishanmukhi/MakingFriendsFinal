@@ -41,7 +41,11 @@ body {
       color: #1abc9c !important;
   }
 </style>
-
+<c:if test="${not empty available}">
+    <script>
+    alert("Availability is set");
+</script>
+</c:if>
 <body>
 <div class="container">
 <div class="navbar-header">

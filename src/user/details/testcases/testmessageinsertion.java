@@ -27,7 +27,7 @@ public class testmessageinsertion {
 			mockdbconnect db = new mockdbconnect();
 			Connection con = db.connect();
 			Statement st = con.createStatement();
-			String q2 = "select message from messagesmock where username='lwhite'";
+			String q2 = "select message from messages where username='lwhite'";
 			ResultSet rs1 = st.executeQuery(q2);
 			String we="";
             while(rs1.next())

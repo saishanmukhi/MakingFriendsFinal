@@ -57,7 +57,7 @@ public class events extends HttpServlet {
 			dbconnect db = new dbconnect();
 			Connection con = db.connect();
 			Statement st = con.createStatement();
-            String q1 = "select eventname,location,fromtime,totime,description from events";
+            String q1 = "select eventname,location,fromtime,totime,description from events where fromtime > NOW()";
             ResultSet rs = st.executeQuery(q1);
             String name=null,location=null,description=null;
             Timestamp from=null,to=null;

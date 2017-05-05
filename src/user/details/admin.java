@@ -77,17 +77,20 @@ public class admin extends HttpServlet {
 		{
 			
 			Statement st = con.createStatement();
-            String q1 = "select * from report";
+            String q1 = "select username,reporteduser,reason,count(reporteduser) from report group by reporteduser";
             ResultSet rs = st.executeQuery(q1);
            String 	u_name = null , runame = null,reason = null;
+           int count=0;
             while(rs.next())
             {
             	u_name = rs.getString(1);
             	runame = rs.getString(2);
             	reason = rs.getString(3);
-            	text1.add(new UserReports(u_name,runame,reason));
+            	count = rs.getInt(4);
+            	
+            	text1.add(new UserReports(u_name,runame,reason,count));
              }
-            System.out.println(u_name+runame+reason);
+            System.out.println(u_name+runame+reason+count);
 		}
 		catch(SQLException e)
         {

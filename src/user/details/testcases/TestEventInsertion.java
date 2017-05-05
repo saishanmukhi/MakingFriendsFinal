@@ -23,7 +23,7 @@ public class TestEventInsertion {
 		ce.insert(con,"Food Festival","SAC","2017-04-27 10:00:00","2017-04-27 14:00:00","Free Food");
 		Connection con1 = db.connect();
 		Statement st1 = con1.createStatement();
-	    String q1 = "select eventname from events where fromtime ='2017-04-27 10:00:00'";
+	    String q1 = "select eventname from events where fromtime >now()";
 	    ResultSet rs= st1.executeQuery(q1);
 	    String eventname="";
 	    while(rs.next())
@@ -31,6 +31,8 @@ public class TestEventInsertion {
 	    	eventname = rs.getString(1);
 	    }
 	    assertEquals("Food Festival",eventname);
-	}
+	    assertNotNull(rs);
+	    assertNotEquals("food",eventname);
+	    	}
 
 }

@@ -17,6 +17,6 @@ public class validateUsername {
 		validate h1 = new validate();
         assertTrue("Username already exists",h1.validateusername("shanmukhi"));
         assertFalse("Username Does not exist", h1.validateusername("loriwhite"));
-        assertFalse("Username Does not exist", h1.validateusername("saisusheel"));
+        assertFalse("Username Does not exist", h1.validateusername("saiusheel"));
     }
 }

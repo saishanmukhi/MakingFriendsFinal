@@ -121,7 +121,7 @@ public class timeinsert extends HttpServlet {
 					            }
 					            
 					            String pq = "Availability is set";
-					    		session.setAttribute("available",pq);
+					    		request.setAttribute("available",pq);
 					            session.setAttribute("uname", uname);
 					    		RequestDispatcher dispatcher = request.getRequestDispatcher("/meet.jsp");
 					    	    dispatcher.forward(request, response);
@@ -136,7 +136,7 @@ public class timeinsert extends HttpServlet {
 						else
 						{	System.out.println("value less than 30 min");
 							String pq="Minimum time should be 30 minutes";
-							session.setAttribute("mintime", pq);
+							request.setAttribute("mintime", pq);
 							session.setAttribute("uname", uname);
 							RequestDispatcher dispatcher = request.getRequestDispatcher("/settime.jsp");
 						    dispatcher.forward(request, response);
@@ -146,7 +146,7 @@ public class timeinsert extends HttpServlet {
 					else
 					{
 						String pq="Set valid to time";
-						session.setAttribute("totime", pq);
+						request.setAttribute("totime", pq);
 						session.setAttribute("uname", uname);
 						RequestDispatcher dispatcher = request.getRequestDispatcher("/settime.jsp");
 					    dispatcher.forward(request, response);
@@ -156,7 +156,7 @@ public class timeinsert extends HttpServlet {
 			else
 			{
 				String pq="Set valid From time";
-				session.setAttribute("fromtime", pq);
+				request.setAttribute("fromtime", pq);
 				session.setAttribute("uname", uname);
 				RequestDispatcher dispatcher = request.getRequestDispatcher("/settime.jsp");
 			    dispatcher.forward(request, response);
@@ -165,7 +165,7 @@ public class timeinsert extends HttpServlet {
 		else
 		{
 			String pq="Select Valid Date";
-			session.setAttribute("datetime", pq);
+			request.setAttribute("datetime", pq);
 			session.setAttribute("uname", uname);
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/settime.jsp");
 		    dispatcher.forward(request, response);

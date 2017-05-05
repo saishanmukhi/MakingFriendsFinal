@@ -66,19 +66,7 @@ public class login extends HttpServlet {
             {
             	check=true;
             	String tpassword = logintest(username);
-            	//String q2 = "select ppassword from userdata where username ='"+username+"'";
-                //ResultSet rs1 = st1.executeQuery(q2);
-                //while(rs1.next())
-               // {
-                	/*if((rs1.getString("ppassword")).equals(password))
-                	{
-                		out.println("login successful");
-                		//session.setAttribute("uname", username);
-                		request.setAttribute("uname", username);
-                		RequestDispatcher dispatcher = request.getRequestDispatcher("/home");
-                	      dispatcher.forward(request, response);
-
-                	}*/
+            	
             		if(tpassword.equals(password) && !username.equals("admin"))
             		{
             			out.println("login successful");

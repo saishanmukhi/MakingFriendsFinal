@@ -1,7 +1,9 @@
 package user.details;
 
 import java.io.IOException;
-
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.time.LocalDateTime;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -12,16 +14,16 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 /**
- * Servlet implementation class home
+ * Servlet implementation class Warning
  */
-@WebServlet("/home")
-public class home extends HttpServlet {
+@WebServlet("/Warning")
+public class Warning extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public home() {
+    public Warning() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -40,14 +42,16 @@ public class home extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
-		
 		HttpSession session = request.getSession();
-		response.setContentType("text/html");
-		String uname = (String)session.getAttribute("uname");
-		session.setAttribute("uname", uname);
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/home4.jsp");
-	      dispatcher.forward(request, response);
-		
+		String userreported = request.getParameter("user1").toString();
+		dbconnect db = new dbconnect();
+		Connection con = db.connect();
+		sendmessage sm= new sendmessage();
+		LocalDateTime now = LocalDateTime.now();
+		boolean send1;
+		send1=sm.insertintomessage("admin",userreported,"Issuing this warning because of your inappropriate behavior",now);
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/admin");
+		dispatcher.forward(request, response);
 	}
 
 }

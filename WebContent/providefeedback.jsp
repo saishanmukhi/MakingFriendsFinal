@@ -91,12 +91,21 @@ function myfunction(){
 <form action="providefeedback" method="post">
 <table class = "ex1" align="Center">
 <tr>
+<th>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</th>
+<td><label for="1">1</label> </td>
+<td><label for="2">2</label> </td>
+<td><label for="3">3</label> </td>
+<td><label for="4">4</label> </td>
+<td><label for="5">5</label> </td>
+</tr>
+<tr>
 <th>RATINGS</th>
-	<td><input type = "radio" name ="rating" value ="1" class ="star" id="rating" onclick="myfunction()"/></td>
-	<td><input type = "radio" name ="rating" value ="2" class ="star" id="rating" onclick="myfunction()"/></td>
-	<td><input type = "radio" name ="rating" value ="3" class ="star" id="rating" onclick="myfunction()"/></td>
-	<td><input type = "radio" name ="rating" value ="4" class ="star" id="rating" onclick="myfunction()"/></td>
-	<td><input type = "radio" name ="rating" value ="5" class ="star" id="rating" onclick="myfunction()"/></td>
+	
+	<td><input type = "radio" name ="rating" id ="1" value ="1"   onclick="myfunction()"/></td>
+	<td><input type = "radio" name ="rating" id ="2" value ="2"  onclick="myfunction()"/></td>
+	<td><input type = "radio" name ="rating" id ="3" value ="3"   onclick="myfunction()"/></td>
+	<td><input type = "radio" name ="rating" id ="4" value ="4"  onclick="myfunction()"/></td>
+	<td><input type = "radio" name ="rating" id ="5" value ="5"   onclick="myfunction()"/></td>
 </tr>
 </table>
 <table class="ex1" align="Center">

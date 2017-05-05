@@ -112,11 +112,12 @@ table.ex1 {
  </div>  
 <div class="container-fluid bg-1 text-center">
 <h3 align="center">EVENT</h3> 
+<div style="color: #FF0000;">${errormessage}</div>
 <form action="createevent" method="post">
 <table align ="Center " class = "ex1">
 <tr>
 <th>EVENT NAME</th>
-	<td><input type ="text" name= "eventname" />${eventname}</td>
+	<td><input type ="text" name= "eventname" /></td>
 </tr>
 
 <tr>
@@ -162,7 +163,6 @@ ${dateentry}
 <option>21:00</option>
 <option>22:00</option>
 <option>23:00</option>
-<option>24:00</option>
 </select>
 </td>
 </tr>
@@ -194,7 +194,6 @@ ${dateentry}
 <option>21:00</option>
 <option>22:00</option>
 <option>23:00</option>
-<option>24:00</option>
 </select>
 </td>
 </tr>

@@ -89,11 +89,7 @@ public class createevent extends HttpServlet {
 					        	dbconnect db = new dbconnect();
 								Connection con = db.connect();
 								insert(con,eventname,location,from,to,description);
-					        	/*Statement st2 = con.createStatement();
-						        String q2 = "insert into events values('" + eventname + "','"+location+"','"+from+"','"+to+"','"+description+"')";
-						        st2.executeUpdate(q2);
-						        st2.close();
-						        con.close();*/
+					        	
 						        insert = true;
 					        }	
 					        else
@@ -102,11 +98,7 @@ public class createevent extends HttpServlet {
 								Connection con2 = db2.connect();
 								description="No Description";
 								insert(con2,eventname,location,from,to,description);
-					        	/*Statement st1 = con2.createStatement();
-						        String q1 = "insert into events values('" + eventname + "','"+location+"','"+from+"','"+to+"',default)";
-						        st1.executeUpdate(q1);
-						        st1.close();
-						        con2.close();*/
+					        	
 						        insert = true;
 					        }
 				            System.out.println("inserted event");
@@ -122,6 +114,7 @@ public class createevent extends HttpServlet {
 					else
 					{
 						session.setAttribute("uname", uname);
+						request.setAttribute("errormessage","Enter Valid Timings");
 	            		RequestDispatcher dispatcher = request.getRequestDispatcher("/createevent.jsp");
 	            	    dispatcher.forward(request, response);
 					}
@@ -131,6 +124,7 @@ public class createevent extends HttpServlet {
 			else
 			{
 				session.setAttribute("uname", uname);
+				request.setAttribute("errormessage","Enter Valid Location");
         		RequestDispatcher dispatcher = request.getRequestDispatcher("/createevent.jsp");
         	    dispatcher.forward(request, response);
 			}
@@ -138,6 +132,7 @@ public class createevent extends HttpServlet {
 		else
 		{
 			session.setAttribute("uname", uname);
+			request.setAttribute("errormessage","Enter Valid EventName");
     		RequestDispatcher dispatcher = request.getRequestDispatcher("/createevent.jsp");
     	    dispatcher.forward(request, response);
 		}

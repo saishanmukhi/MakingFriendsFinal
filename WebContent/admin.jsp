@@ -11,7 +11,7 @@
   <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<title>Notifications</title>
+<title>ADMIN</title>
 </head>
 <style type="text/css">
 th
@@ -61,8 +61,7 @@ table.ex1 {
 </style>
 <body>
 <div class="container">
-<div class = "page-header">
-<h1>Welcome Admin</h1>
+ <div class = "page-header">
     <div class="btn-toolbar pull-right">
     	<table align ="right" style="margin-top:10px" class = "ex1">
     	<tr>
@@ -72,7 +71,6 @@ table.ex1 {
          </tr>
         </table>
     </div>
- </div>
 <div class="navbar-header">
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
         <span class="icon-bar"></span>
@@ -81,6 +79,7 @@ table.ex1 {
       </button>
       <a class="navbar-brand" align="left" href="#">MakingFriends.com</a>
     </div>
+     </div>
 <div class="container-fluid bg-1 text-center">
 <input type="hidden" name="uname" value='${uname}'/>
 
@@ -92,12 +91,14 @@ table.ex1 {
    <th>User Name</th>
    <th>Crook</th>
    <th>Reason</th>
+   <th>Count</th>
    </tr>
    <c:forEach var="reports" items="${reports}" >
    <tr>
     <td>${reports.userName}</td>
     <td>${reports.reportedUserName}</td>
     <td>${reports.reason}</td>
+    <td>${reports.count}</td>
     </tr>
 	</c:forEach>
 <tr>

@@ -14,7 +14,7 @@ public class mocksendmessage {
 		mockdbconnect db = new mockdbconnect();
 		Connection con = db.connect();
         Statement st = con.createStatement();
-        String q1 = "insert into messagesmock values('"+uname+"','"+recipient+"','"+message+"','"+now+"')";
+        String q1 = "insert into messages values('"+uname+"','"+recipient+"','"+message+"','"+now+"')";
         st.executeUpdate(q1);
         send=true;
         System.out.println("inserted messages");

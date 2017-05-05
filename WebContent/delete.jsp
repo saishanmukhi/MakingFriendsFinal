@@ -1,9 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<title>MakingFriends.com</title>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -11,7 +11,9 @@
   <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
- <style type="text/css">
+<title>WARNING</title>
+</head>
+<style type="text/css">
 th
 {
     padding:0 15px 0 15px;
@@ -57,8 +59,10 @@ table.ex1 {
     border-spacing: 10px;
 }
 </style>
-</head>
 <body>
+<script>
+
+</script>
 <div class="container">
 <div class="navbar-header">
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -67,15 +71,41 @@ table.ex1 {
         <span class="icon-bar"></span>                        
       </button>
       <a class="navbar-brand" align="left" href="#">MakingFriends.com</a>
+    </div> 
+    <div class = "page-header">
+    <div class="btn-toolbar pull-right">
+    	<table align ="right" style="margin-top:10px" class = "ex1">
+    	<tr>
+		<form action="admin" method="post">
+		<td><input type ="submit" name="HOME" button class ="btn btn-info" value ="HOME"/></td>
+		</form>
+         </tr>
+        </table>
     </div>
-<div class="container-fluid bg-1 text-center">
-<h3 align="Center">Hey,you have registered successfully !</h3>
+ </div>
+ <input type="hidden" name="uname" value='${uname}'/>
+ <div class="container-fluid bg-1 text-center">
+ 	
 
-<table>
+<form action="Delete" method="post">
+<table class = "ex1" align ="center">
 <tr>
-<td><a href="index1.jsp"><input type ="submit" button class ="btn btn-info" value ="LOGIN" /></a></td>
+<th>USERNAME</th>
+	<td><select name ="user1">
+
+	 <c:forEach var="li" items="${users}" >
+	<option>${li}</option>
+	</c:forEach>
+	</select>
+	</td>
 </tr>
 </table>
+<table>
+<tr>
+<td><input type ="submit"  button class ="btn btn-info" value ="BLOCK"/></td>
+</tr>
+</table>
+</form>
 </div>
 </div>
 </body>

@@ -21,7 +21,7 @@ public class TestDeletionUser {
 		mockdbconnect db = new mockdbconnect();
 		Connection con2 = db.connect();
 		Statement std = con2.createStatement();
-	    String q1 = "select reporteduser from report where reporteduser ='rajyalakshmi'";
+	    String q1 = "select reporteduser from report where reporteduser ='santhosh1'";
 	    ResultSet rs= std.executeQuery(q1);
 	   String count=null;
 	    while(rs.next())

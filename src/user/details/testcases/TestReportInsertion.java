@@ -20,7 +20,7 @@ public class TestReportInsertion {
 		report1 h1 = new report1();
 		mockdbconnect db = new mockdbconnect();
 		Connection con = db.connect();
-		assertTrue(h1.insert(con,"lwhite","rajyalakshmi","not communicative"));
+		assertTrue(h1.insert(con,"lwhite","santhosh1","not communicative"));
 		Connection con1 = db.connect();
 		Statement st1 = con1.createStatement();
 	    String q1 = "select reporteduser from report where username ='lwhite'";
@@ -29,7 +29,7 @@ public class TestReportInsertion {
 	    {
 	    	user = rs.getString(1);
 	    }
-	    assertEquals("rajyalakshmi",user);
+	    assertEquals("santhosh1",user);
 	    		
 	}
 

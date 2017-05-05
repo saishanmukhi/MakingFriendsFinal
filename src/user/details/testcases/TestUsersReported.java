@@ -24,12 +24,12 @@ public class TestUsersReported {
 		Connection con = db.connect();
 		text1 = a.getReport(con);
 		String repuser = text1.get(0).getReportedUserName();
-		assertEquals("rajyalakshmi",repuser);
+		assertEquals("santhosh1",repuser);
 		TakeAction ta = new TakeAction();
 		Connection con1 = db.connect();
 		int c=0;
 		try {
-				c = ta.count(con1,"rajyalakshmi");
+				c = ta.count(con1,"santhosh1");
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -37,7 +37,7 @@ public class TestUsersReported {
 			System.out.println(c);
 			if(c>1)
 			{
-				ta.delete(con1,"rajyalakshmi");
+				ta.delete(con1,"santhosh1");
 			}
 	}
 	

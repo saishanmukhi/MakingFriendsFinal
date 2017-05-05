@@ -226,7 +226,6 @@ public class validate {
                 {
                     if(!eventname.matches("\\s+"))
 
-
                         check = true;
                 }
             }    
@@ -234,21 +233,35 @@ public class validate {
 		}
 		private boolean validDate(String beginDate, String endDate)
 		{
-			Calendar fromDate = Calendar.getInstance(), toDate = Calendar.getInstance();
-			fromDate.set(Integer.parseInt(beginDate.substring(0,4)), Integer.parseInt(beginDate.substring(5,7)), Integer.parseInt(beginDate.substring(7,9)), Integer.parseInt(beginDate.substring(11,13)), Integer.parseInt(beginDate.substring(14,16)));
-			toDate.set(Integer.parseInt(endDate.substring(0,4)), Integer.parseInt(endDate.substring(5,7)), Integer.parseInt(endDate.substring(7,9)), Integer.parseInt(endDate.substring(11,13)), Integer.parseInt(endDate.substring(14,16)));
-            boolean check = false;
-            if(fromDate.compareTo(toDate) == -1)
+			Calendar cal = Calendar.getInstance();
+			Calendar fromDate = Calendar.getInstance();
+			Calendar toDate = Calendar.getInstance();
+			fromDate.set(Integer.parseInt(beginDate.substring(0,4)), Integer.parseInt(beginDate.substring(5,7)), Integer.parseInt(beginDate.substring(8,10)), 0, 0, 0);
+			toDate.set(Integer.parseInt(endDate.substring(0,4)), Integer.parseInt(endDate.substring(5,7)), Integer.parseInt(endDate.substring(8,10)), 0, 0, 0);
+			boolean check = false;
+            if(fromDate.compareTo(cal) == 1)
             {
-            	if(fromDate.get(Calendar.YEAR) == toDate.get(Calendar.YEAR) && fromDate.get(Calendar.MONTH) == toDate.get(Calendar.MONTH) && fromDate.get(Calendar.DATE) == toDate.get(Calendar.DATE))
-            	{
-            		if(validateFromTime(beginDate.substring(11,16), beginDate.substring(0,9)) && validateToTime(beginDate.substring(11,16), endDate.substring(11,16), beginDate.substring(0,9)))
-            			check = true;
-            	}
-            	else
-            	{
-            		check = true;
-            	}
+            	if(fromDate.compareTo(toDate) == -1)
+                {
+                  	if(validateFromTime(beginDate.substring(11,16), beginDate.substring(0,10)))
+                  	{
+                   		check = true;
+                  	}
+                }
+                else 
+                {
+                	if(fromDate.equals(toDate))
+                	{
+                       	if(validateFromTime(beginDate.substring(11,16), beginDate.substring(0,10)))
+                       	{
+                       		if(validateToTime(beginDate.substring(11,16), endDate.substring(11,16), beginDate.substring(0,10)))
+                       		{	
+                       			check = true;
+                       		}
+                       	}
+                	}
+                	
+                }	
             }
             
             return check;
@@ -261,11 +274,12 @@ public class validate {
 			{
 				String fromDate = from.substring(0,10);
 				String toDate = to.substring(0,10);
-				
 				if(validateDate(fromDate) && validateDate(toDate))
 				{
 					if(validDate(from, to))
+					{
 						check = true;
+					}
 				}
 			}
 						

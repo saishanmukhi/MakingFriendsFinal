@@ -52,28 +52,14 @@
   }
   p {font-size: 16px;}
   .margin {margin-bottom: 45px;}
-  .bg-1 { 
-      background-color: #1abc9c; /* Green */
-      color: #ffffff;
-  }
-  .bg-2 { 
-      background-color: #474e5d; /* Dark Blue */
-      color: #ffffff;
-  }
-  .bg-3 { 
-      background-color: #ffffff; /* White */
-      color: #555555;
-  }
-  .bg-4 { 
-      background-color: #2f2f2f; /* Black Gray */
-      color: #fff;
-  }
+  
   .container-fluid {
       padding-top: 70px;
       padding-bottom: 70px;
       background-color: #1abc9c; /* Green */
    color: #ffffff;
   }
+  
   .navbar {
       padding-top: 15px;
       padding-bottom: 15px;
@@ -86,6 +72,13 @@
   .navbar-nav  li a:hover {
       color: #1abc9c !important;
   }
+  table.ex1 {
+     border-collapse: separate;
+    border-spacing: 10px;
+}
+ table.t {
+    color: #191970;
+}
   </style>
 <body>
 <!-- Navbar -->
@@ -108,7 +101,7 @@
 </nav>
 <!-- First Container -->
 <div class="container-fluid bg-1 text-center">
-<table bgcolor="#4286f4">
+<table class="t" align="center" >
 <tr>
 <td>
 Average Rating &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -118,14 +111,12 @@ Average Rating &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 </td>
 </tr>
 </table>
-
- <table >
-
+ <table class="ex1" align="left" >
    <c:forEach var="viewfeedback" items="${feedback}" >
    <tr>
-    <td>${viewfeedback.name}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </td> 
+    <td>${viewfeedback.name}</td> 
     <td><span class="stars">${viewfeedback.userRating}</span></td>
-    <td> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ${viewfeedback.userComment}</td>
+    <td>${viewfeedback.userComment}</td>
     </tr>
 </c:forEach>
 </table>

@@ -16,9 +16,9 @@ public class testnotification {
 	public void testnotify() {
 		notification h1= new notification();
 		x1= h1.getnotification("ssdiproject");
-		receivedMessage[] x2 = new receivedMessage[3];
+		receivedMessage[] x2 = new receivedMessage[4];
 		x2 = x1.toArray(x2);
-		//Timestamp t = new Timestamp()
+		//Timestamp t = new Timestamp();
 		assertEquals(x2[0].getName(), "lwhite");
 		assertEquals(x2[0].getMessage(), "how are you?");
 		assertEquals(x2[0].getTime().toString(),"2017-04-06 18:46:43.0");
@@ -28,6 +28,11 @@ public class testnotification {
 		assertEquals(x2[2].getName(), "shanmukhi");
 		assertEquals(x2[2].getMessage(), "hi team.testing project");
 		assertEquals(x2[2].getTime().toString(),"2017-04-06 21:02:39.0");
+		assertEquals(x2[3].getName(), "shanmukhi");
+		assertEquals(x2[3].getMessage(), "hii");
+		assertEquals(x2[3].getTime().toString(),"2017-04-12 12:03:35.0");
+		
+	}
+		
 	}
 
-}

@@ -28,7 +28,7 @@ public class testtimeinsertion {
 			mockdbconnect db = new mockdbconnect();
 			Connection con = db.connect();
 			Statement st = con.createStatement();
-			String q2 = "select from1 from freetimemock where username='shanmukhi' ";
+			String q2 = "select from1 from freetime where username='shanmukhi' ";
 			ResultSet rs1 = st.executeQuery(q2);
 			String we="";
             while(rs1.next())

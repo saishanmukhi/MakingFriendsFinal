@@ -3,14 +3,24 @@ package user.details;
 public class UserReports {
 	
 	String userName,reportedUserName,reason;
+	int count;
 	
 
-	public UserReports(String userName, String reportedUserName, String reason) {
+	
+
+	public UserReports(String userName, String reportedUserName, String reason, int count) {
 		this.userName = userName;
 		this.reportedUserName = reportedUserName;
 		this.reason = reason;
+		this.count=count;
+	}
+	public int getCount() {
+		return count;
 	}
 
+	public void setCount(int count) {
+		this.count = count;
+	}
 	public String getUserName() {
 		return userName;
 	}

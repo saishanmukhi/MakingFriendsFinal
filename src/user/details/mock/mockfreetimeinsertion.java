@@ -13,7 +13,7 @@ public class mockfreetimeinsertion {
 			mockdbconnect db = new mockdbconnect();
 			Connection con = db.connect();
 			Statement st = con.createStatement();
-	 	    String q1 = "insert into freetimemock values('"+uname+"',STR_TO_DATE('"+datex+"','%Y-%m-%d'),TIME_FORMAT('"+fromx+"','%H:%i'),TIME_FORMAT('"+tox+"','%H:%i'))";
+	 	    String q1 = "insert into freetime values('"+uname+"',STR_TO_DATE('"+datex+"','%Y-%m-%d'),TIME_FORMAT('"+fromx+"','%H:%i'),TIME_FORMAT('"+tox+"','%H:%i'))";
 	        st.executeUpdate(q1);
 	        ip1=true;
             System.out.println("inserted freetime");
@@ -31,7 +31,7 @@ public class mockfreetimeinsertion {
 		try{
 		mockdbconnect db = new mockdbconnect();
 		Connection con = db.connect();
-		String query = "update freetimemock set date1 = STR_TO_DATE(?,'%Y-%m-%d'),from1 = TIME_FORMAT(?,'%H:%i'),to1 = TIME_FORMAT(?,'%H:%i') where username = ?";
+		String query = "update freetime set date1 = STR_TO_DATE(?,'%Y-%m-%d'),from1 = TIME_FORMAT(?,'%H:%i'),to1 = TIME_FORMAT(?,'%H:%i') where username = ?";
         java.sql.PreparedStatement preparedStmt = con.prepareStatement(query);
         preparedStmt.setString(1,datex);
         preparedStmt.setString(2,fromx);
