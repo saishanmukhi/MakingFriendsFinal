@@ -20,7 +20,7 @@ public class TestEventInsertion {
 		createevent ce = new createevent();
 		mockdbconnect db= new mockdbconnect();
 		Connection con = db.connect();
-		ce.insert(con,"Food Festival","SAC","2017-04-27 10:00:00","2017-04-27 14:00:00","Free Food");
+		ce.insert(con,"Food Festival","SAC","2017-05-27 10:00:00","2017-05-27 14:00:00","Free Food");
 		Connection con1 = db.connect();
 		Statement st1 = con1.createStatement();
 	    String q1 = "select eventname from events where fromtime >now()";

@@ -28,7 +28,7 @@ public class eventTest
 	public void validTimeTest()
 	{
 		validate r = new validate();
-		assertTrue(r.validTime("2017-05-06 10:00", "2017-05-06 11:00"));
+		assertTrue(r.validTime("2017-05-10 10:00", "2017-05-10 11:00"));
 		assertTrue(r.validTime("2017-05-26 20:00", "2017-05-29 11:00"));
         assertFalse("from date less than current date", r.validTime("2017-04-20 10:00", "2017-04-27 10:00"));
         assertFalse("to dates less than current date", r.validTime("2017-04-27 10:00", "2017-04-20 10:00"));

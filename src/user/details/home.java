@@ -1,7 +1,12 @@
 package user.details;
 
 import java.io.IOException;
-
+import java.io.PrintWriter;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -44,6 +49,8 @@ public class home extends HttpServlet {
 		HttpSession session = request.getSession();
 		response.setContentType("text/html");
 		String uname = (String)session.getAttribute("uname");
+		
+	
 		session.setAttribute("uname", uname);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/home4.jsp");
 	      dispatcher.forward(request, response);

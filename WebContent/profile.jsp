@@ -19,7 +19,50 @@
 	text-align: center;
 }
 </style>
+<style>
+  body {
+      font: 20px Montserrat, sans-serif;
+      line-height: 1.8;
+    
+  }
+  p {font-size: 16px;}
+  .margin {margin-bottom: 45px;}
+  
+ 
+  
+  .container-fluid {
+      padding-top: 70px;
+      padding-bottom: 70px;
+  }
+  .navbar {
+      padding-top: 15px;
+      padding-bottom: 15px;
+      border: 0;
+      border-radius: 0;
+      margin-bottom: 0;
+      font-size: 12px;
+      letter-spacing: 5px;
+  
+  }
+ 
+  .navbar-nav  li a:hover {
+      color: #1abc9c !important; 
+  }
+  h3{
+    margin-left: 500px;
+  }
+  #myNavbar
+  {
+    
+  }
+  table.ex1 {
+    border-collapse: separate;
+    border-spacing: 10px;
+    margin: 0 auto;
+}
+  </style>
 </head>
+
 <body>
 
 <script>
@@ -46,11 +89,30 @@ function myfunction(){
 }
 
 </script>
-<div class="page-header">
-<h1>PROFILE</h1>
-</div>
-<table>
+
+<!-- Navbar -->
+<nav class="navbar navbar-default">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      <a class="navbar-brand" href="#">MakingFriends.com</a>
+      <h3  style="color:#FA8072" >PROFILE</h3>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <div class="nav navbar-nav navbar-right">
+      <form action="home" method="post"><input type ="submit" value ="BACK"/></form>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<table align ="Center" class = "ex1">
 <tr>
+<td>&nbsp</td>
 <td><a href="profile1.jsp"> <input type ="button" class ="btn btn-info" value ="EDIT" onclick="myfunction()" id ="EDIT"/></a></td>
 </tr>
 <tr>
@@ -152,5 +214,6 @@ function myfunction(){
 <td align="center"><input type ="submit" class ="btn btn-info" value ="SUBMIT" disabled="disabled" id ="submit"/></td>
 </tr>
 </table>
+
 </body>
 </html>

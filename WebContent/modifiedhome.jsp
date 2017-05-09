@@ -10,12 +10,27 @@
   <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<title>Home</title>  
+<title>Home</title>
+<style type="text/css"> <!---------------FEEDBACK TABLE FORMATTING------------->
+th
+{
+    padding:0 15px 0 15px;
+}
+td
+{
+    padding:0 15px 0 15px;
+}
+form{
+     margin:auto;
+     display:block;
+}
+</style>
+  
 <style>
 .btn {
     margin-right: 5px;
 }
-</style>
+</style><!--------------------------FEEDBACK TABLE FORMATTING----------------->
 
 <style>
   body {
@@ -32,16 +47,10 @@
 #three{
 	margin-left: 100px;
 }
-#four{
-	margin-left: 100px;
-}
-#five{
-	margin-left: 100px;
-}
   p {font-size: 16px;}
   .margin {margin-bottom: 45px;}
   .bg-1 { 
-      background-color: #1abc9c  ; 
+      background-color: orange; /* Green */
       color: #ffffff;
   }
   .bg-2 { 
@@ -165,7 +174,7 @@ body {font-family: Verdana,sans-serif;}
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>                        
       </button>
-      <a class="navbar-brand" href="#">Welcome!</a>
+      <a class="navbar-brand" href="#">Welcome Home!</a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav navbar-right">
@@ -230,8 +239,8 @@ function showSlides() {
 }
 </script>
 
-<% 
-/** <table align ="Center" style="margin-top:50px" class = "ex1">
+
+ <table align ="Center" style="margin-top:50px" class = "ex1">
  <tr>
 <td align="left"><form action="matchuser" method="post"><input type ="submit" name="MATCH" button class ="btn btn-info" value ="MATCH"/></form></td>
 <td>&nbsp</td>
@@ -247,47 +256,49 @@ function showSlides() {
 </tr>
 </table>
 </div>
-**/
-%>
+
 <!-- Third Container (Grid) -->
 <div class="container-fluid bg-3 text-center">    
   <h3 class="margin"><u>Some Cool Special Features!</u></h3><br>
   <div class="row">
     <div class="col-sm-4">
       <p>You have the chance to match up to lots of potential friends!</p>
-    <form action="matchuser" method="post"><input type="image" src="http://media.namx.org/images/webstatic/network/nam_network_285x195.jpg" class="img-responsive margin" style="width:200px" style="height:200px" id="one" alt="Submit"></form>
-    </div>
+      <!--<a href="match.jsp"><img src="http://media.namx.org/images/webstatic/network/nam_network_285x195.jpg" class="img-responsive margin" style="width:200px" style="height:200px" id="one"></a>-->
+ <form action="matchuser" method="post"><input type="image" src="http://media.namx.org/images/webstatic/network/nam_network_285x195.jpg" class="img-responsive margin" style="width:200px" style="height:200px" id="one" alt="Submit"></form>
+   </div>
     <div class="col-sm-4"> 
       <p>Check your inbox for the latest notifications!</p>
-     <form action="notification" method="post"><input type="image" src="http://megaicons.net/static/img/icons_sizes/8/178/256/buzz-message-outline-icon.png" class="img-responsive margin" style="width:200px" style="height:200px" id="two" alt="Submit"></form>    
-    </div>
+      <!--<a href="notifications.jsp"><img src="http://megaicons.net/static/img/icons_sizes/8/178/256/buzz-message-outline-icon.png" class="img-responsive margin" style="width:200px" style="height: 200px" id="two"></a>-->
+<form action="notification" method="post"><input type="image" src="http://megaicons.net/static/img/icons_sizes/8/178/256/buzz-message-outline-icon.png" class="img-responsive margin" style="width:200px" style="height:200px" id="two" alt="Submit"></form>    
+</div>
     <div class="col-sm-4"> 
       <p>Don't be afraid to report malicious content!</p>
-     <form action="report" method="post"><input type="image" src="https://www.becker.edu/wp-content/uploads/2011/11/Campus-Police_Alerts-Notifications.jpg" class="img-responsive margin" style="width:200px" style="height:200px" id="three" alt="Submit"></form>  
-    </div>
+      <!--<a href="report.jsp"><img src="https://www.becker.edu/wp-content/uploads/2011/11/Campus-Police_Alerts-Notifications.jpg" class="img-responsive margin" style="width:200px" style="height: 200px" id="three"></a>-->
+  <form action="report" method="post"><input type="image" src="https://www.becker.edu/wp-content/uploads/2011/11/Campus-Police_Alerts-Notifications.jpg" class="img-responsive margin" style="width:200px" style="height:200px" id="three" alt="Submit"></form>  
+</div>
   </div>
-  
-<div class="row">
-    <div class="col-sm-4" align="center"> 
-      <p align="center">Meet Up with your new friends!</p>
-     <form action="meet" method="post"><input type="image" src="https://ga-core.s3.amazonaws.com/production/uploads/program/default_image/2012/thumb_M_G_graphic.jpg" class="img-responsive margin" style="width:200px" style="height:200px" id="four" alt="Submit"></form>  
-    </div>
-    <div class="col-sm-4" align="center"> 
-      <p align="center">Create events for you and friends!</p>
-    <form action="events" method="post"><input type="image" src="https://gafirst.org/wp-content/uploads/2016/12/special_event.png" class="img-responsive margin" style="width:200px" style="height:200px" id="five" alt="Submit"></form>  
-    </div>
- </div>
- </div>
- 
-<div class="container-fluid bg-4 text-center">
-<table align ="Center" style="margin-top:50px" class = "ex1">
-<tr>
-<td align="left"><form action="FeedbackControl" method="post"><input type ="submit" name="FEEDBACK" button class ="btn btn-info" value ="FEEDBACK"/></form></td>
-<td>&nbsp</td>
-<td align="right"><form action="viewfeedbacklogin" method="post"><input type ="submit" name="FEEDBACK" button class ="btn btn-info" value ="Check out the comments from our awesome users!!"/></form></td>
-</tr>
+</div>
+
+<!------FOURTH CONTAINER-----------------------------------FOURTH CONTIANER--------------------------->
+<div class="container-fluid bg-4 text-center">    
+  <h3 class="margin"><u>Feedback</u></h3><br>
+  <h4 class="margin">Check out the cool things our awesome users said about us!</h4>
+<table border ="5" align="Center" >
+   <tr>
+   <th>USER</th>
+   <th>FEEDBACK</th>
+   </tr>
+<c:forEach var="feedback" items="${feedback}">
+   <tr>
+    <td>${feedback.u}</td>
+    <td>${feedback.f}</td>
+   </tr>
+</c:forEach>
 </table>
 </div>
+<!------FOURTH CONTAINER-----------------------------------FOURTH CONTAINER--------------------------->
+
+
 <!-- Footer -->
 <footer class="container-fluid bg-5 text-center">
   <p>makingfriends @2017</p> 

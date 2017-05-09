@@ -74,8 +74,9 @@ public class search extends HttpServlet {
             System.out.println(date2 + from1 + to1);
             st.close();
             searchuserclass suc=new searchuserclass();
-            listp= suc.searchuser(uname,date2,from1,to1);
-            if(listp.isEmpty())
+            ArrayList<searchdetails>text1;
+            text1= suc.searchuser(uname,date2,from1,to1);
+            if(text1.isEmpty())
             {
             	
                 session.setAttribute("uname", uname);
@@ -84,7 +85,7 @@ public class search extends HttpServlet {
             }
             else
             {
-            session.setAttribute("list1", listp);
+            session.setAttribute("list1", text1);
             session.setAttribute("uname", uname);
     		RequestDispatcher dispatcher = request.getRequestDispatcher("/search.jsp");
     	    dispatcher.forward(request, response);

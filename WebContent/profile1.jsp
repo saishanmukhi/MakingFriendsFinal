@@ -19,7 +19,50 @@
 	text-align: center;
 }
 </style>
+<style>
+  body {
+      font: 20px Montserrat, sans-serif;
+      line-height: 1.8;
+    
+  }
+  p {font-size: 16px;}
+  .margin {margin-bottom: 45px;}
+  
+ 
+  
+  .container-fluid {
+      padding-top: 70px;
+      padding-bottom: 70px;
+  }
+  .navbar {
+      padding-top: 15px;
+      padding-bottom: 15px;
+      border: 0;
+      border-radius: 0;
+      margin-bottom: 0;
+      font-size: 12px;
+      letter-spacing: 5px;
+  
+  }
+ 
+  .navbar-nav  li a:hover {
+      color: #1abc9c !important; 
+  }
+  h3{
+    margin-left: 500px;
+  }
+  #myNavbar
+  {
+    
+  }
+  table.ex1 {
+    border-collapse: separate;
+    border-spacing: 10px;
+    margin: 0 auto;
+}
+  </style>
 </head>
+
 <c:if test="${not empty loginError}">
     <script>alert("Enter valid Details.Try Again!");
 </script>
@@ -29,7 +72,7 @@
 <div class="page-header">
 <input type ="button" class ="btn btn-info" value ="EDIT" disabled="disabled" id ="EDIT"/>
 </div>
-<table>
+<table align ="Center" class="ex1">
 <tr>
 <th>NAME</th>
 	<td><input type = "text" name = "name"  value='${pname}' id="name" /></td>

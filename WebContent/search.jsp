@@ -74,12 +74,19 @@ table.ex1 {
  <table border ="5">
    <tr>
    <th>Users Available</th>
+    <th>Date</th>
+   <th>From</th>
+   <th>To</th>
    </tr>
-   <c:forEach var="list" items="${list1}" >
+    <c:forEach var="searchdetails" items="${list1}" >
    <tr>
-    <td>${list}</td>
+    <td>${searchdetails.person}</td>
+    <td>${searchdetails.date1}</td>
+    <td>${searchdetails.from11}</td>
+    <td>${searchdetails.to11}</td>
     </tr>
 	</c:forEach>
+   
 </table>
 <form action="home" method="post">
 <input type ="submit" name="HOME" button class ="btn btn-info" value ="HOME"/>

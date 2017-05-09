@@ -21,6 +21,31 @@ table.ex1 {
     border-collapse: separate;
     border-spacing: 10px;
 }
+body {
+      font: 20px Montserrat, sans-serif;
+      line-height: 1.8;
+     
+  }
+  p {font-size: 16px;}
+  .margin {margin-bottom: 45px;}
+ 
+  .container-fluid {
+      padding-top: 70px;
+      padding-bottom: 70px;
+  }
+  .navbar {
+      padding-top: 15px;
+      padding-bottom: 15px;
+      border: 0;
+      border-radius: 0;
+      margin-bottom: 0;
+      font-size: 12px;
+      letter-spacing: 5px;
+  }
+  .navbar-nav  li a:hover {
+      color: #1abc9c !important;
+  }
+
 </style>
 <c:if test="${not empty valid}">
     <script>
@@ -34,6 +59,29 @@ table.ex1 {
 </c:if>
 
 <body>
+<%
+/**
+<!-- Navbar -->
+<nav class="navbar navbar-default">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      <a class="navbar-brand" href="#">MakingFriends.com</a>
+     
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <div class="nav navbar-nav navbar-right">
+      <form action="home" method="post"><input type ="submit" button class ="btn btn-info" value ="HOME"/></form>
+      </div>
+    </div>
+  </div>
+</nav>
+**/
+%>
 <div class="container">
 <div class="navbar-header">
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -43,15 +91,28 @@ table.ex1 {
       </button>
       <a class="navbar-brand" align="left" href="#">MakingFriends.com</a>
     </div> 
+    <div class="collapse navbar-collapse" id="myNavbar">
+    <div class="nav navbar-nav navbar-right">
+    <form action="home" method="post"><input type ="submit" button class ="btn btn-info" value ="HOME"/></form>
+    </div>
+  </div>
+</div>
+<% 
+/**   
+   
     <table align="center">
 <tr>
+
 <form action="home" method="post">
 <td><input type ="submit" name="HOME" button class ="btn btn-info" value ="HOME"/></td>
 </form>
 </tr>
-</table>   	
+</table>
+**/
+%>
+
 <form action="send" method="post">
-<table class = "ex1">
+<table class="ex1">
 <tr>
 <th>Recipient</th>
 	<td><input type = "text" name = "recipient"/></td>
@@ -70,8 +131,6 @@ table.ex1 {
 </tr>
 </table>
 </form>
-
-
 </div>
 </body>
 </html>
