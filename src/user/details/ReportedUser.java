@@ -52,7 +52,7 @@ public class ReportedUser extends HttpServlet {
 			dbconnect db = new dbconnect();
 			Connection con = db.connect();
 			Statement st = con.createStatement();
-            String q1 = "select reporteduser from report";
+            String q1 = "select distinct reporteduser from report";
             ResultSet rs = st.executeQuery(q1);
            String 	 runame = null;
             while(rs.next())
